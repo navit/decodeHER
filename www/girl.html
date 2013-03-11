@@ -49,10 +49,10 @@
 						p.addClass(className);
 					});
 
-					$("#box").append(p);
+					$("#boxGirl").append(p);
 
 					// scroll down so we can see the latest!
-					$("#box").scrollTop($("#box")[0].scrollHeight);
+					$("#boxGirl").scrollTop($("#box")[0].scrollHeight);
 				}
 
 				// selecting rooms
@@ -116,24 +116,19 @@
 		</script>
 	</head>
 	<body>
+	<img id ="logo" src="images/logo.png">
 		
-		<div id="login">
+		<!--
+<div id="login">
 			<p><input type="text" id="girlUsernameInput" /> <button id="usernameButton">Submit</button></p>
 			<p><input type="text" id="password" /> <button id="passwordButton">Submit</button></p>
 <!--
-			<p>
-				Choose your room: 
-				<select>
-					<option value="lobby">Lobby</option>
-					<option value="lounge">Lounge</option>
-					<option value="conservatory">Conservatory</option>
-				</select>
-			</p>
 -->
 		</div>
 
+
 		<div id="chat">
-			<div id="box">
+			<div id="boxGirl">
 <!--
 				<p class="is-admin"><span class="username">Username:</span> Hello</p>
 				<p class="is-someone-else"><span class="username">Username:</span> Hello</p>
@@ -141,7 +136,7 @@
 -->
 			</div>
 
-			<input id="chatbox" type="text" />
+			<input id="chatboxGirl" type="text" />
 		</div>
 
 	</body>
