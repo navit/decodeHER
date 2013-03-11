@@ -5,6 +5,7 @@ body {
 	font-family: Arial;
 	background: #333333;
 	zoom: reset;
+	/* background-image:url('texture.jepg'); */
 }
 
 #chat {
