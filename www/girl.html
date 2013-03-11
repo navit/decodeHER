@@ -4,7 +4,8 @@
 		<title>Chat</title>
 
 		<link type="stylesheet" rel="stylesheet" href="./css/main.css" />
-
+		<link href="css/popupGirl.css" rel="stylesheet"/>
+		
 		<script src="/socket.io/socket.io.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 
@@ -56,7 +57,7 @@
 				}
 
 				// selecting rooms
-				$("#passwordButton").click(function() {
+				$("#submitButton").click(function() {
 					var data = {};
 					data.username = username;
 					if(room) data.oldRoom = room;
@@ -71,8 +72,16 @@
 				});
 				
 				
+				//clicking in boxes
+				$("#girlUsernameInput").click(function() {
+					$(this).val("");
+				});
+				$("#password").click(function() {
+					$(this).val("");
+				});
+				
 				// changing usernames
-				$("#usernameButton").click(function() {
+				$("#submitButton").click(function() {
 						var textBox = document.getElementById("girlUsernameInput");
 						var newUsername = $.trim($(textBox).val());
 						if(newUsername != "") {
@@ -116,31 +125,25 @@
 		</script>
 	</head>
 	<body>
-		
-		<div id="login">
+		<div id="overlay">
+            <div id="popup">
+            	<p>Username <input type="text" id="girlUsernameInput" val=/></p>
+                <p>Password <input type="text" id="password" /></p>
+                <p id="submitButton">Submit</p>
+                <a href="#">Close</a>
+            </div>
+        </div>    
+        
+		<!--
+<div id="login">
 			<p><input type="text" id="girlUsernameInput" /> <button id="usernameButton">Submit</button></p>
 			<p><input type="text" id="password" /> <button id="passwordButton">Submit</button></p>
-<!--
-			<p>
-				Choose your room: 
-				<select>
-					<option value="lobby">Lobby</option>
-					<option value="lounge">Lounge</option>
-					<option value="conservatory">Conservatory</option>
-				</select>
-			</p>
--->
 		</div>
+-->
 
 		<div id="chat">
 			<div id="box">
-<!--
-				<p class="is-admin"><span class="username">Username:</span> Hello</p>
-				<p class="is-someone-else"><span class="username">Username:</span> Hello</p>
-				<p class="is-me"><span class="username">Username:</span> Hello</p>
--->
 			</div>
-
 			<input id="chatbox" type="text" />
 		</div>
 

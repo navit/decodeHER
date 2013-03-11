@@ -5,7 +5,8 @@
 		<title>Chat Room</title>
 
 		<link type="stylesheet" rel="stylesheet" href="./css/main.css" />
-
+		<link href="css/popupBoy.css" rel="stylesheet"/>
+		
 		<script src="/socket.io/socket.io.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 
@@ -59,7 +60,7 @@ socket.on('user left',function(username) {
 				}
 
 				// selecting rooms
-				$("#passwordButton").click(function() {
+				$("#submitButton").click(function() {
 					var data = {};
 					data.username = username;
 					if(room) data.oldRoom = room;
@@ -73,9 +74,16 @@ socket.on('user left',function(username) {
 
 				});
 
-
+				//clicking in boxes
+				$("#boyUsernameInput").click(function() {
+					$(this).val("");
+				});
+				$("#password").click(function() {
+					$(this).val("");
+				});
+				
 				// changing usernames
-				$("#usernameButton").click(function() {
+				$("#submitButton").click(function() {
 						var textBox = document.getElementById("boyUsernameInput");
 						var newUsername = $.trim($(textBox).val());
 						if(newUsername != "") {
@@ -121,30 +129,20 @@ socket.on('user left',function(username) {
 	</head>
 	<body>
 		<img id ="logo" src="images/logo.png">
-		<div id="login">
-			<p><input type="text" id="boyUsernameInput" /> <button id="usernameButton">Change Your Name</button></p>
-			<p><input type="text" id="password" /> <button id="passwordButton">Input your password to chat</button></p>
-			<!--
-<p>
-				Choose your room: 
-				<select>
-					<option value="lobby">Lobby</option>
-					<option value="lounge">Lounge</option>
-					<option value="conservatory">Conservatory</option>
-				</select>
-			</p>
--->
-		</div>
+		
+		<div id="overlay">
+            <div id="popup">
+            	<p>Username <input type="text" id="boyUsernameInput" val=/></p>
+                <p>Password <input type="text" id="password" /></p>
+                <p id="submitButton">Submit</p>
+                <a href="#">Close</a>
+            </div>
+        </div>  
+        
 
 		<div id="chat">
 			<div id="box">
-<!--
-				<p class="is-admin"><span class="username">Username:</span> Hello</p>
-				<p class="is-someone-else"><span class="username">Username:</span> Hello</p>
-				<p class="is-me"><span class="username">Username:</span> Hello</p>
--->
 			</div>
-
 			<input id="chatbox" type="text" />
 		</div>
 
