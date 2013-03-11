@@ -3,7 +3,7 @@ body {
 	width:100%;
 	height:100%;
 	font-family: Arial;
-	background: black;
+	background: #333333;
 	zoom: reset;
 }
 
@@ -12,33 +12,47 @@ body {
 	height:80%;
 } 
 
-#box {
+#boxBoy {
 	display: block;
-	width:85%;
-	height:85%;
-	border:1px solid gray;
+	width:45%;
+	height:75%;
+	background: #66CCCC;
 	cursor: text;
 	overflow: scroll;
+	margin: 20px auto;
+	padding:10px;
+	box-shadow: 4px 4px 5px #161616;
+}
+
+#chatboxBoy {
+	width:45.5%;
+	border:1px solid black;	
+	font-size:18px;
+	font-family: monospace;
 	padding:5px;
+	margin: 0 385px;
+	box-shadow: 4px 4px 5px #161616;
+}
+#boxGirl {
+	display: block;
+	width:45%;
+	height:75%;
+	background: #FF3366;
+	cursor: text;
+	overflow: scroll;
+	margin: 20px auto;
+	padding:10px;
+	box-shadow: 4px 4px 5px #161616;
 }
 
-#box p {
-	margin:8px 0;	
+#chatboxGirl{
+	width:45.5%;
+	border:1px solid black;	
+	font-size:18px;
+	font-family: georgia;
 	padding:5px;
-}
-
-#box p .username {
-	background:#ccc;
-	padding:5px 8px;
-	margin-right:5px;
-}
-
-#box p.is-admin .username {
-	background:#ff00ff;
-}
-
-#box p.is-me .username {
-	background:yellow;
+	margin: 0 385px;
+	box-shadow: 4px 4px 5px #161616;
 }
 
 #girlUsernameInput {
@@ -53,15 +67,29 @@ body {
 	background: #06266F;
 
 }
+img#logo{
+	width: 16%;
+	margin:20px 0 0 580px;
+}
 
-#chatbox {
-	width:85%;
-	border:1px solid black;	
-	font-size:20px;
+
+/*
+#boxBoy p {
+	margin:8px 0;	
 	padding:5px;
 }
 
-img#logo{
-	width: 25%;
-	margin:auto;
+#boxBoy p .username {
+	background:#ccc;
+	padding:5px 8px;
+	margin-right:5px;
 }
+
+#boxBoy p.is-admin .username {
+	background:#ff00ff;
+}
+
+#boxBoy p.is-me .username {
+	background:yellow;
+}
+*/

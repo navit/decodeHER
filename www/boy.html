@@ -53,10 +53,10 @@ socket.on('user left',function(username) {
 						p.addClass(className);
 					});
 
-					$("#box").append(p);
+					$("#boxBoy").append(p);
 
 					// scroll down so we can see the latest!
-					$("#box").scrollTop($("#box")[0].scrollHeight);
+					$("#boxBoy").scrollTop($("#box")[0].scrollHeight);
 				}
 
 				// selecting rooms
@@ -104,7 +104,7 @@ socket.on('user left',function(username) {
 				
 
 				// sending messages
-				$("#chatbox").keyup(function(evt) {
+				$("#chatboxBoy").keyup(function(evt) {
 
 					if(evt.keyCode == KEYCODE_ENTER_BUTTON) {
 						var data = {};
@@ -129,6 +129,7 @@ socket.on('user left',function(username) {
 	</head>
 	<body>
 		<img id ="logo" src="images/logo.png">
+<<<<<<< HEAD
 		
 		<div id="overlay">
             <div id="popup">
@@ -139,11 +140,33 @@ socket.on('user left',function(username) {
             </div>
         </div>  
         
+=======
+		<!--
+<div id="login">
+			<p><input type="text" id="boyUsernameInput" /> <button id="usernameButton">Change Your Name</button></p>
+			<p><input type="text" id="password" /> <button id="passwordButton">Input your password to chat</button></p>
+			<!--
+-->
+		</div>
+>>>>>>> 5ca140b16410948b39cec613f4f3cbe0c594773f
+
 
 		<div id="chat">
+<<<<<<< HEAD
 			<div id="box">
 			</div>
 			<input id="chatbox" type="text" />
+=======
+			<div id="boxBoy">
+<!--
+				<p class="is-admin"><span class="username">Username:</span> Hello</p>
+				<p class="is-someone-else"><span class="username">Username:</span> Hello</p>
+				<p class="is-me"><span class="username">Username:</span> Hello</p>
+-->
+			</div>
+
+			<input id="chatboxBoy" type="text" />
+>>>>>>> 5ca140b16410948b39cec613f4f3cbe0c594773f
 		</div>
 
 	</body>
