@@ -56,18 +56,6 @@ body {
 	box-shadow: 4px 4px 5px #161616;
 }
 
-#girlUsernameInput {
-	width:20%;
-	height: 20%;
-	background: #B1009B; 
-}
-
-#boyUsernameInput{
-	width:20%;
-	height: 20%;
-	background: #06266F;
-
-}
 img#logo{
 	width: 16%;
 	margin:20px 0 0 580px;

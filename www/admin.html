@@ -1,11 +1,10 @@
-<!-- TEST FROM QUINCY -->
 <!doctype html>
 <html>
 	<head>
-		<title>Chat Room</title>
+		<title>ChatRoom</title>
 
 		<link type="stylesheet" rel="stylesheet" href="./css/main.css" />
-		<link href="css/popupBoy.css" rel="stylesheet"/>
+		<link href="css/popupGirl.css" rel="stylesheet"/>
 		
 		<script src="/socket.io/socket.io.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
@@ -17,29 +16,17 @@
 			$(document).ready(function() {
 				var socket = io.connect('http://localhost');
 				
-				var username = "What?";
+				var username = "Admin";
+				var pass = "Password";
 				var room = false;
 				
 				socket.on('user joined',function(username) {
 					appendMessage("Chat Admin",username + " has joined the room.",["is-admin"]);
 				});
 
-				//socket.on('user left',function(username) {
-				//	appendMessage(CHAT_ADMIN_NAME,username + " has left the room.",["is-admin"]);
-				//});
-
-				//socket.on('user changed name',function(oldName,newName) {
-				//	appendMessage(CHAT_ADMIN_NAME,oldName + " is now known as " + newName,["is-admin"]);
-				//});
-
 				socket.on("user chatted",function(data) {
 					appendMessage(data.username,data.message,["is-someone-else"]);
 				});
-				
-				socket.on("admin translation",function(data) {
-					appendMessage(data.username,data.message,["is-someone-else"]);
-				});
-
 
 				// adding messages
 				function appendMessage(username,message,classes) {
@@ -52,32 +39,29 @@
 					p.append(span);
 					p.append(":  ");
 					p.append(message);
-					
+
 					$.each(classes,function(i,className) {
 						p.addClass(className);
 					});
 
-					$("#boxBoy").append(p);
+					$("#boxGirl").append(p);
 
 					// scroll down so we can see the latest!
-					$("#boxBoy").scrollTop($("#box")[0].scrollHeight);
+					$("#boxGirl").scrollTop($("#box")[0].scrollHeight);
 				}
 
 				
 				//clicking in boxes
-				$("#boyUsernameInput").click(function() {
+				$("#girlUsernameInput").click(function() {
 					$(this).val("");
 				});
 				$("#password").click(function() {
 					$(this).val("");
 				});
 				
-				
-				
-				
 				// changing usernames
 				$("#submitButton").click(function() {
-						var textBox = document.getElementById("boyUsernameInput");
+						var textBox = document.getElementById("girlUsernameInput");
 						var newUsername = $.trim($(textBox).val());
 						if(newUsername != "") {
 							var data = {};
@@ -93,11 +77,9 @@
 
 					return false;
 				});
-				
 
-
-				// sending messages
-				$("#chatboxBoy").keyup(function(evt) {
+				// translating messages
+				$("#chatboxGirl").keyup(function(evt) {
 
 					if(evt.keyCode == KEYCODE_ENTER_BUTTON) {
 						var data = {};
@@ -105,7 +87,7 @@
 						data.username = username;
 						data.message = $(this).val();
 
-						socket.emit('chat',data);
+						socket.emit('admin sends translation',data);
 						appendMessage(data.username,data.message,["is-me"]);
 
 						$(this).val(""); // clears the box for the next message.
@@ -114,31 +96,31 @@
 					return false;
 				});
 
-				$("#boyUsernameInput").val(username);
-				$('#password').val("Password");
+				$("#girlUsernameInput").val(username);
+				$('#password').val(pass);
 				//$("select").trigger("change"); // force the lobby to be selected.
 			});
-
 		</script>
 	</head>
 	<body>
-		<img id ="logo" src="images/logo.png">
-		
+
 		<div id="overlay">
             <div id="popup">
-            	<p><input type="text" id="boyUsernameInput" val=/></p>
-                <p><input type="text" id="password" /></p>
+                <p><input type="text" id="password" val="Password" /></p>
                 <p id="submitButton">Submit</p>
                 <a id="closeButton" href="#"><img id="closeButtonImg" src="images/chatButton.png" /></a>
             </div>
-        </div>  
+        </div>    
         
+	<img id ="logo" src="images/logo.png">
+		
+
 
 
 		<div id="chat">
-			<div id="boxBoy">
+			<div id="boxGirl">
 			</div>
-			<input id="chatboxBoy" type="text" />
+			<input id="chatboxGirl" type="text" />
 		</div>
 
 	</body>

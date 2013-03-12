@@ -15,7 +15,11 @@
 
 			$(document).ready(function() {
 				var socket = io.connect('http://localhost');
-
+				
+				var username = "Name";
+				var pass = "Password";
+				var room = false;
+				
 				socket.on('user joined',function(username) {
 					appendMessage("Chat Admin",username + " has joined the room.",["is-admin"]);
 				});
@@ -32,8 +36,7 @@
 					appendMessage(data.username,data.message,["is-someone-else"]);
 				});
 
-				var username = "What would you like to be called?";
-				var room = false;
+				
 
 				// adding messages
 				function appendMessage(username,message,classes) {
@@ -44,6 +47,7 @@
 					span.addClass("username");
 					span.text(username);
 					p.append(span);
+					p.append(":  ");
 					p.append(message);
 
 					$.each(classes,function(i,className) {
@@ -56,21 +60,6 @@
 					$("#boxGirl").scrollTop($("#box")[0].scrollHeight);
 				}
 
-				// selecting rooms
-				$("#submitButton").click(function() {
-					var data = {};
-					data.username = username;
-					if(room) data.oldRoom = room;
-					var boxInput = document.getElementById("password");
-					data.newRoom = $.trim($(boxInput).val());
-					room = data.newRoom;
-
-					socket.emit('change room',data);
-
-					appendMessage(CHAT_ADMIN_NAME,"You are now in this room :: " + room ,["is-admin"]);
-
-				});
-				
 				
 				//clicking in boxes
 				$("#girlUsernameInput").click(function() {
@@ -79,6 +68,9 @@
 				$("#password").click(function() {
 					$(this).val("");
 				});
+				
+				
+				
 				
 				// changing usernames
 				$("#submitButton").click(function() {
@@ -92,16 +84,17 @@
 							data.newName = username;
 
 							socket.emit('user changed name',data);
-							$(textBox).val("");
+/* 							$(textBox).val(""); */
 							//appendMessage(CHAT_ADMIN_NAME,"You now go by " + data.newName + ".",["is-admin"]);
 					}
 
 					return false;
 				});
+				
 
 
 				// sending messages
-				$("#chatbox").keyup(function(evt) {
+				$("#chatboxGirl").keyup(function(evt) {
 
 					if(evt.keyCode == KEYCODE_ENTER_BUTTON) {
 						var data = {};
@@ -116,10 +109,10 @@
 					}
 
 					return false;
-				})
+				});
 
 				$("#girlUsernameInput").val(username);
-				$('#password').val("Password");
+				$('#password').val(pass);
 				//$("select").trigger("change"); // force the lobby to be selected.
 			});
 		</script>
@@ -128,10 +121,10 @@
 
 		<div id="overlay">
             <div id="popup">
-            	<p>Username <input type="text" id="girlUsernameInput" val=/></p>
-                <p>Password <input type="text" id="password" /></p>
+            	<p><input type="text" id="girlUsernameInput" val="Name" /></p>
+                <p><input type="text" id="password" val="Password" /></p>
                 <p id="submitButton">Submit</p>
-                <a href="#">Close</a>
+                <a id="closeButton" href="#"><img id="closeButtonImg" src="images/chatButton.png" /></a>
             </div>
         </div>    
         

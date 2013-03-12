@@ -16,14 +16,14 @@
             -moz-border-radius: 10px;
                  border-radius: 10px;
                  opacity:1;
-                
+            font-family: georgia;    
         }
 
         #overlay{
             position:absolute;
             top:0px;
             visibility:hidden;
-            background-color:rgba(239,4,252,0.57);
+            background-color:rgba(255,52,103,0.);
             opacity:1;
             left:0px;
             height:100%;
@@ -144,5 +144,50 @@
                 opacity: 1;        
             }
         }
-       
+        
+        #closeButtonImg
+            {
+                position:absolute;
+                right:1px;
+                cursor:pointer;
+                border:none;
+                margin-top: -240px;
+                margin-right: -30px;
+            }
+            
+       #girlUsernameInput{
+	      margin-top: 55px; 
+       }   
+         
+       #girlUsernameInput, #password{
+			width: 150px;
+			height: 20%;
+			border: #B1009B solid 2px;
+			padding: 5px;
+			background: black;
+			color: white;
+			font-size: 21px;
+			font-family: arial; 
+		}       
+		
+		#submitButton{
+			background: black;
+			color: #66CCCC;
+			width: 100px;
+			height: 30px;
+			padding-top: 7px;
+			font-family: arial;
+			font-size: 21px;
+			margin: auto;
+			border-radius: 19px;
+			-moz-border-radius: 25px;
+			-moz-border-radius: 25px;
+			-moz-border-radius: 25px;
+			-moz-border-radius: 25px;
+			-moz-border-radius: 25px;
+			-moz-border-radius: 25px;
+			border-radius: 24px;
+			-moz-border-radius: 25px;
+			
+		}
             

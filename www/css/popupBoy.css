@@ -16,6 +16,7 @@
             -moz-border-radius: 10px;
                  border-radius: 10px;
                  opacity:1;
+            font-family: monospace;
                 
         }
 
@@ -23,7 +24,7 @@
             position:absolute;
             top:0px;
             visibility:hidden;
-            background-color:rgba(5,42,253,0.57);
+            background-color:rgba(102,204,204,0.4);
             opacity:1;
             left:0px;
             height:100%;
@@ -144,5 +145,51 @@
                 opacity: 1;        
             }
         }
-                
+        
+        #closeButtonImg
+            {
+                position:absolute;
+                right:1px;
+                cursor:pointer;
+                border:none;
+                margin-top: -240px;
+                margin-right: -30px;
+            }
+            
+       #boyUsernameInput{
+	      margin-top: 65px; 
+       }   
+         
+       #boyUsernameInput, #password{
+			width: 150px;
+			height: 20%;
+			border: #66CCCC solid 2px;
+			padding: 5px;
+			background: black;
+			color: white;
+			font-size: 21px;
+			font-family: arial; 
+		}       
+		
+		#submitButton{
+			background: black;
+			color: #B1009B;
+			width: 100px;
+			height: 30px;
+			padding-top: 7px;
+			font-family: arial;
+			font-size: 21px;
+			margin: auto;
+			border-radius: 19px;
+			-moz-border-radius: 25px;
+			-moz-border-radius: 25px;
+			-moz-border-radius: 25px;
+			-moz-border-radius: 25px;
+			-moz-border-radius: 25px;
+			-moz-border-radius: 25px;
+			border-radius: 24px;
+			-moz-border-radius: 25px;
+			
+		}
+                        
      

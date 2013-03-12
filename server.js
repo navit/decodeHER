@@ -77,6 +77,14 @@ socket.on('change room',function(data) {
 		console.log("[CHATROOM] :: Room " + data.room + " :: " + data.username + " :: " + data.message);
 		socket.broadcast.to(data.room).emit('user chatted',data);
 	});
+	
+	socket.on('admin sends translation',function(data) {
+		console.log("[CHATROOM] :: Room " + data.room + " :: " + data.username + " :: " + data.message);
+		socket.broadcast.to(data.room).emit('admin translation',data);
+	});
+
+	
+	
 
 /*
 	socket.on('disconnect',function(data) {
