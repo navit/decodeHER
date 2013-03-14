@@ -32,11 +32,12 @@
 				//	appendMessage(CHAT_ADMIN_NAME,oldName + " is now known as " + newName,["is-admin"]);
 				//});
 
-				socket.on("user chatted",function(data) {
+	
+				socket.on("admin rejects and suggests to boy",function(data) {
 					appendMessage(data.username,data.message,["is-someone-else"]);
 				});
 				
-				socket.on("admin translation",function(data) {
+				socket.on("admin translation to boy",function(data) {
 					appendMessage(data.username,data.message,["is-someone-else"]);
 				});
 
@@ -105,7 +106,7 @@
 						data.username = username;
 						data.message = $(this).val();
 
-						socket.emit('chat',data);
+						socket.emit('boyChat',data);
 						appendMessage(data.username,data.message,["is-me"]);
 
 						$(this).val(""); // clears the box for the next message.

@@ -24,9 +24,14 @@
 					appendMessage("Chat Admin",username + " has joined the room.",["is-admin"]);
 				});
 
-				socket.on("user chatted",function(data) {
+				socket.on("girl chatted",function(data) {
 					appendMessage(data.username,data.message,["is-someone-else"]);
 				});
+				
+				socket.on("boy chatted",function(data) {
+					appendMessage(data.username,data.message,["is-someone-else"]);
+				});
+	
 
 				// adding messages
 				function appendMessage(username,message,classes) {

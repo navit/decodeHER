@@ -19,7 +19,8 @@
 				var username = "Name";
 				var pass = "Password";
 				var room = false;
-				
+					
+	
 				socket.on('user joined',function(username) {
 					appendMessage("Chat Admin",username + " has joined the room.",["is-admin"]);
 				});
@@ -32,7 +33,7 @@
 				//	appendMessage(CHAT_ADMIN_NAME,oldName + " is now known as " + newName,["is-admin"]);
 				//});
 
-				socket.on("user chatted",function(data) {
+				socket.on("admin forwards to girl",function(data) {
 					appendMessage(data.username,data.message,["is-someone-else"]);
 				});
 
@@ -102,7 +103,7 @@
 						data.username = username;
 						data.message = $(this).val();
 
-						socket.emit('chat',data);
+						socket.emit('girlChat',data);
 						appendMessage(data.username,data.message,["is-me"]);
 
 						$(this).val(""); // clears the box for the next message.

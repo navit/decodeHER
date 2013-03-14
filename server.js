@@ -58,9 +58,7 @@ socket.on('change room',function(data) {
 			socket.leave(data.oldRoom);
 			socket.broadcast.to(data.oldRoom).emit('user left',data.username);
 		}
-
 		console.log("[CHATROOM] :: Room " + data.newRoom + " :: " + data.username + " joined.");
-
 		socket.join(data.newRoom);
 		socket.broadcast.to(data.newRoom).emit('user joined',data.username);
 	});
@@ -73,16 +71,31 @@ socket.on('change room',function(data) {
 	});
 */
 
-	socket.on('chat',function(data) {
-		console.log("[CHATROOM] :: Room " + data.room + " :: " + data.username + " :: " + data.message);
-		socket.broadcast.to(data.room).emit('user chatted',data);
-	});
-	
-	socket.on('admin sends translation',function(data) {
-		console.log("[CHATROOM] :: Room " + data.room + " :: " + data.username + " :: " + data.message);
-		socket.broadcast.to(data.room).emit('admin translation',data);
+/* 	emitted by girl */
+	socket.on('girlChat',function(data) {
+		socket.broadcast.to(data.room).emit('girl chatted',data);
 	});
 
+/* 	emitted by boy	 */
+	socket.on('boyChat',function(data) {
+		socket.broadcast.to(data.room).emit('boy chatted',data);
+	});
+	
+/* 	emitted by admin	 */
+	socket.on('admin sends translation',function(data) {
+		socket.broadcast.to(data.room).emit('admin translation to boy',data);
+	});
+
+/* 	emitted by admin	 */	
+	socket.on('admin forwards',function(data) {
+		socket.broadcast.to(data.room).emit('admin forwards to girl',data);
+	});
+
+/* 	emitted by admin	 */
+	socket.on('admin rejects',function(data) {
+		socket.broadcast.to(data.room).emit('admin rejects and suggests to boy',data);
+	});
+	
 	
 	
 
