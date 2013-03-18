@@ -43,7 +43,7 @@ socket.on('user joined',function(username) {
 
 				// adding messages
 				function appendMessage(username,message,classes) {
-					if(!classes) classes = [];
+					if(!classes) classes = []; 
 
 					var p = $("<p></p>");
 					var span = $("<span></span>");
@@ -59,7 +59,7 @@ socket.on('user joined',function(username) {
 
 					$("#boxGirl").append(p);
 					// scroll down so we can see the latest!
-					$("#boxGirl").scrollTop($("#box")[0].scrollHeight);
+					$("#boxGirl").scrollTop($("#boxGirl")[0].scrollHeight);
 				}
 
 				

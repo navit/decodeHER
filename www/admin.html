@@ -52,7 +52,7 @@ socket.on('user joined',function(username) {
 	
 				
 			
-				// adding messages
+				// adding messages publishing on its own screen
 				function appendMessage(username,message,classes) {
 					if(!classes) classes = [];
 					
@@ -65,7 +65,7 @@ socket.on('user joined',function(username) {
 					p.append(message);
 
 					$.each(classes,function(i,className) {
-						p.addClass(className);
+						p.addClass(className); //the current class - is boy or is girl
 					});
 
 					$("#boxAdmin").append(p);

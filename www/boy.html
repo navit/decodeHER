@@ -42,8 +42,9 @@ socket.on('user joined',function(username) {
 				});
 				
 				socket.on("admin translation to boy",function(data) {
-					appendMessage(data.latestU,data.latestM,[data.latestC]);
-					appendMessage(data.username,data.message,["is-admin"]);
+					window.alert(data.latestM);
+					appendMessage(data.latestU,data.latestM,[data.latestC]); //original message
+					appendMessage(data.username,data.message,["is-admin"]); //new translation
 				});
 
 
