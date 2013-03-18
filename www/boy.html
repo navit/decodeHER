@@ -35,7 +35,8 @@ socket.on('user joined',function(username) {
 				//socket.on('user changed name',function(oldName,newName) {
 				//	appendMessage(CHAT_ADMIN_NAME,oldName + " is now known as " + newName,["is-admin"]);
 				//});
-				
+
+	
 				socket.on("admin rejects and suggests to boy",function(data) {
 					appendMessage(data.username,data.message,["is-admin"]);
 				});
@@ -44,9 +45,18 @@ socket.on('user joined',function(username) {
 					appendMessage(data.latestU,data.latestM,[data.latestC]); //original message
 					appendMessage(data.username,data.message,["is-admin"]); //new translation
 				});
+				
+				/*
+socket.on("approved message",function(data) {
+					appendMessage(data.username,data.message,["is-boy"]); //his approved message that was sent to the girl displayed on his screen
+				});
+*/
+				socket.on("admin forwards to girl",function(data) {
+					appendMessage(data.username,data.message,["is-boy"]);//his approved message that was sent to the girl displayed on his screen
+				});
 
 
-				// adding messages
+				// adding messages from admin
 				function appendMessage(username,message,classes) {
 					if(!classes) classes = [];
 
@@ -69,7 +79,7 @@ socket.on('user joined',function(username) {
 				}
 
 				
-				//clicking in boxes
+				//clicking in boxes //change user name in the overlay
 				$("#boyUsernameInput").click(function() {
 					$(this).val("");
 				});
@@ -111,7 +121,7 @@ socket.on('user joined',function(username) {
 						data.message = $(this).val();
 
 						socket.emit('boyChat',data);
-						//appendMessage(data.username,data.message,["is-boy"]);
+						//appendMessage(data.username,data.message,["is-boy"]);//appends to his own page
 
 						$(this).val(""); // clears the box for the next message.
 					}

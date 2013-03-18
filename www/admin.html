@@ -122,7 +122,7 @@ socket.on('user joined',function(username) {
 					return false;
 				});
 				
-				$("#forward").click(function() {
+				$("#forward").click(function() {//admin clicks on the forward button and send message in both directions(boy and girl)
 					var data = {};
 					data.room = room;
 					data.username = latestUsername;

@@ -88,7 +88,8 @@ socket.on('change room',function(data) {
 
 /* 	emitted by admin	 */	
 	socket.on('admin forwards',function(data) {
-		socket.broadcast.to(data.room).emit('admin forwards to girl',data);
+		socket.broadcast.to(data.room).emit('admin forwards to girl',data);//to the girl approved message
+		socket.broadcast.to(data.room).emit('approved message',data);//to the boy his own approved message
 		console.log(data.message);
 	});
 
@@ -97,7 +98,7 @@ socket.on('change room',function(data) {
 		socket.broadcast.to(data.room).emit('admin rejects and suggests to boy',data);
 	});
 	
-	
+
 	
 
 /*
