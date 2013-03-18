@@ -42,7 +42,6 @@ socket.on('user joined',function(username) {
 				});
 				
 				socket.on("admin translation to boy",function(data) {
-					window.alert(data.latestM);
 					appendMessage(data.latestU,data.latestM,[data.latestC]); //original message
 					appendMessage(data.username,data.message,["is-admin"]); //new translation
 				});
@@ -67,7 +66,7 @@ socket.on('user joined',function(username) {
 					$("#boxBoy").append(p);
 
 					// scroll down so we can see the latest!
-					$("#boxBoy").scrollTop($("#box")[0].scrollHeight);
+					$("#boxBoy").scrollTop($("#boxBoy")[0].scrollHeight);
 				}
 
 				
@@ -140,8 +139,6 @@ socket.on('user joined',function(username) {
             </div>
         </div>  
         
-
-
 		<div id="chat">
 			<div id="boxBoy">
 			</div>
