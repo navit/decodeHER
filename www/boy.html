@@ -35,8 +35,7 @@ socket.on('user joined',function(username) {
 				//socket.on('user changed name',function(oldName,newName) {
 				//	appendMessage(CHAT_ADMIN_NAME,oldName + " is now known as " + newName,["is-admin"]);
 				//});
-
-	
+				
 				socket.on("admin rejects and suggests to boy",function(data) {
 					appendMessage(data.username,data.message,["is-admin"]);
 				});
@@ -112,7 +111,7 @@ socket.on('user joined',function(username) {
 						data.message = $(this).val();
 
 						socket.emit('boyChat',data);
-						appendMessage(data.username,data.message,["is-boy"]);
+						//appendMessage(data.username,data.message,["is-boy"]);
 
 						$(this).val(""); // clears the box for the next message.
 					}
