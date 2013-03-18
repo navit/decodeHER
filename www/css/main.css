@@ -56,9 +56,47 @@ body {
 	box-shadow: 4px 4px 5px #161616;
 }
 
+#boxAdmin {
+	display: block;
+	width:45%;
+	height:75%;
+	background: #c0cd00;
+	cursor: text;
+	overflow: scroll;
+	margin: 20px auto;
+	padding:10px;
+	box-shadow: 4px 4px 5px #161616;
+}
+
+#chatboxAdmin{
+	width:45.5%;
+	border:1px solid black;	
+	font-size:18px;
+	font-family: georgia;
+	padding:5px;
+	margin: 0 385px;
+	box-shadow: 4px 4px 5px #161616;
+}
+
 img#logo{
 	width: 16%;
 	margin:20px 0 0 580px;
+}
+
+
+.is-boy{
+	padding:5px;
+	background:#66CCCC;
+}
+
+.is-girl{
+	padding:5px;
+	background:#FF3366;
+}
+
+.is-admin{
+	padding:5px;
+	background:#c0cd00;
 }
 
 

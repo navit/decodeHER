@@ -21,9 +21,11 @@
 				var room = false;
 					
 	
-				socket.on('user joined',function(username) {
+				/*
+socket.on('user joined',function(username) {
 					appendMessage("Chat Admin",username + " has joined the room.",["is-admin"]);
 				});
+*/
 
 				//socket.on('user left',function(username) {
 				//	appendMessage(CHAT_ADMIN_NAME,username + " has left the room.",["is-admin"]);
@@ -34,7 +36,7 @@
 				//});
 
 				socket.on("admin forwards to girl",function(data) {
-					appendMessage(data.username,data.message,["is-someone-else"]);
+					appendMessage(data.username,data.message,["is-boy"]);
 				});
 
 				
@@ -56,19 +58,12 @@
 					});
 
 					$("#boxGirl").append(p);
-
 					// scroll down so we can see the latest!
 					$("#boxGirl").scrollTop($("#box")[0].scrollHeight);
 				}
 
 				
-				//clicking in boxes
-				$("#girlUsernameInput").click(function() {
-					$(this).val("");
-				});
-				$("#password").click(function() {
-					$(this).val("");
-				});
+				
 				
 				
 				
@@ -83,12 +78,10 @@
 							data.oldName = username;
 							username = newUsername;
 							data.newName = username;
-
 							socket.emit('user changed name',data);
 /* 							$(textBox).val(""); */
 							//appendMessage(CHAT_ADMIN_NAME,"You now go by " + data.newName + ".",["is-admin"]);
 					}
-
 					return false;
 				});
 				
@@ -96,25 +89,32 @@
 
 				// sending messages
 				$("#chatboxGirl").keyup(function(evt) {
-
 					if(evt.keyCode == KEYCODE_ENTER_BUTTON) {
 						var data = {};
 						data.room = room;
 						data.username = username;
 						data.message = $(this).val();
-
 						socket.emit('girlChat',data);
-						appendMessage(data.username,data.message,["is-me"]);
-
+						appendMessage(data.username, data.message, ["is-girl"]);
+						
 						$(this).val(""); // clears the box for the next message.
 					}
-
 					return false;
 				});
 
+
+
 				$("#girlUsernameInput").val(username);
 				$('#password').val(pass);
-				//$("select").trigger("change"); // force the lobby to be selected.
+				
+				//clicking in boxes
+				$("#girlUsernameInput").click(function() {
+					$(this).val("");
+				});
+				$("#password").click(function() {
+					$(this).val("");
+				});
+				
 			});
 		</script>
 	</head>

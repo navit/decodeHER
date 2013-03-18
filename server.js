@@ -89,6 +89,7 @@ socket.on('change room',function(data) {
 /* 	emitted by admin	 */	
 	socket.on('admin forwards',function(data) {
 		socket.broadcast.to(data.room).emit('admin forwards to girl',data);
+		console.log(data.message);
 	});
 
 /* 	emitted by admin	 */

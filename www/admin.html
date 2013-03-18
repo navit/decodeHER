@@ -12,7 +12,9 @@
 		<script>
 			var CHAT_ADMIN_NAME = "Chat Admin";
 			var KEYCODE_ENTER_BUTTON = 13;
-
+			
+			
+			
 			$(document).ready(function() {
 				var socket = io.connect('http://localhost');
 				
@@ -20,23 +22,40 @@
 				var pass = "Password";
 				var room = false;
 				
-				socket.on('user joined',function(username) {
+				var latestMessage;
+				var latestUsername;
+				var latestClass;
+								
+				
+				
+			/*
+socket.on('user joined',function(username) {
 					appendMessage("Chat Admin",username + " has joined the room.",["is-admin"]);
 				});
+*/
 
 				socket.on("girl chatted",function(data) {
-					appendMessage(data.username,data.message,["is-someone-else"]);
+					appendMessage(data.username,data.message,["is-girl"]);
+					latestMessage = data.message;
+					latestUsername = data.username;
+					latestClass = "is-girl";
+					$("#forward").hide();
 				});
 				
 				socket.on("boy chatted",function(data) {
-					appendMessage(data.username,data.message,["is-someone-else"]);
+					appendMessage(data.username,data.message,["is-boy"]);
+					latestMessage = data.message;
+					latestUsername = data.username;
+					latestClass = "is-boy";
+					$("#forward").show();
 				});
 	
-
+				
+			
 				// adding messages
 				function appendMessage(username,message,classes) {
 					if(!classes) classes = [];
-
+					
 					var p = $("<p></p>");
 					var span = $("<span></span>");
 					span.addClass("username");
@@ -49,22 +68,20 @@
 						p.addClass(className);
 					});
 
-					$("#boxGirl").append(p);
+					$("#boxAdmin").append(p);
 
 					// scroll down so we can see the latest!
-					$("#boxGirl").scrollTop($("#box")[0].scrollHeight);
+					$("#boxAdmin").scrollTop($("#box")[0].scrollHeight);
 				}
 
 				
 				//clicking in boxes
-				$("#girlUsernameInput").click(function() {
-					$(this).val("");
-				});
 				$("#password").click(function() {
 					$(this).val("");
 				});
 				
 				// changing usernames
+/*
 				$("#submitButton").click(function() {
 						var textBox = document.getElementById("girlUsernameInput");
 						var newUsername = $.trim($(textBox).val());
@@ -76,32 +93,48 @@
 							data.newName = username;
 
 							socket.emit('user changed name',data);
-/* 							$(textBox).val(""); */
-							//appendMessage(CHAT_ADMIN_NAME,"You now go by " + data.newName + ".",["is-admin"]);
+							$(textBox).val("");
+							appendMessage(CHAT_ADMIN_NAME,"You now go by " + data.newName + ".",["is-admin"]);
 					}
 
 					return false;
 				});
+*/
 
 				// translating messages
-				$("#chatboxGirl").keyup(function(evt) {
+				$("#chatboxAdmin").keyup(function(evt) {
 
 					if(evt.keyCode == KEYCODE_ENTER_BUTTON) {
 						var data = {};
 						data.room = room;
 						data.username = username;
 						data.message = $(this).val();
-
+						data.latestU = latestUsername;
+						data.latestM = latestMessage;
+						data.latestC = latestClass;
+						
 						socket.emit('admin sends translation',data);
-						appendMessage(data.username,data.message,["is-me"]);
+						appendMessage(data.username,data.message,["is-admin"]);
 
 						$(this).val(""); // clears the box for the next message.
 					}
 
 					return false;
 				});
+				
+				$("#forward").click(function() {
+					var data = {};
+					data.room = room;
+					data.username = latestUsername;
+					data.message = latestMessage;
+					
+					socket.emit('admin forwards', data);
+					$("#forward").hide();
+				});
 
-				$("#girlUsernameInput").val(username);
+
+
+
 				$('#password').val(pass);
 				//$("select").trigger("change"); // force the lobby to be selected.
 			});
@@ -123,10 +156,12 @@
 
 
 		<div id="chat">
-			<div id="boxGirl">
+			<div id="boxAdmin">
 			</div>
-			<input id="chatboxGirl" type="text" />
+			<input id="chatboxAdmin" type="text" />
 		</div>
+		<button id="forward">Forward</button>
+		
 
 	</body>
 </html>

@@ -17,12 +17,16 @@
 			$(document).ready(function() {
 				var socket = io.connect('http://localhost');
 				
+				
 				var username = "What?";
 				var room = false;
 				
-				socket.on('user joined',function(username) {
+				
+				/*
+socket.on('user joined',function(username) {
 					appendMessage("Chat Admin",username + " has joined the room.",["is-admin"]);
 				});
+*/
 
 				//socket.on('user left',function(username) {
 				//	appendMessage(CHAT_ADMIN_NAME,username + " has left the room.",["is-admin"]);
@@ -34,11 +38,12 @@
 
 	
 				socket.on("admin rejects and suggests to boy",function(data) {
-					appendMessage(data.username,data.message,["is-someone-else"]);
+					appendMessage(data.username,data.message,["is-admin"]);
 				});
 				
 				socket.on("admin translation to boy",function(data) {
-					appendMessage(data.username,data.message,["is-someone-else"]);
+					appendMessage(data.latestU,data.latestM,[data.latestC]);
+					appendMessage(data.username,data.message,["is-admin"]);
 				});
 
 
@@ -107,7 +112,7 @@
 						data.message = $(this).val();
 
 						socket.emit('boyChat',data);
-						appendMessage(data.username,data.message,["is-me"]);
+						appendMessage(data.username,data.message,["is-boy"]);
 
 						$(this).val(""); // clears the box for the next message.
 					}
