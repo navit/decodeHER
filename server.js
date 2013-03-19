@@ -98,6 +98,19 @@ socket.on('change room',function(data) {
 		socket.broadcast.to(data.room).emit('admin rejects to boy',data);
 	});
 	
+	
+	socket.on('admin present',function(data) {
+		socket.broadcast.to(data.room).emit('admin here',data);
+	});
+	
+	socket.on('boy present',function(data) {
+		socket.broadcast.to(data.room).emit('boy here',data);
+	});
+	
+	socket.on('girl present',function(data) {
+		socket.broadcast.to(data.room).emit('girl here',data);
+	});
+	
 
 /*
 	socket.on('disconnect',function(data) {

@@ -25,6 +25,45 @@
 				
 				var username = "What?";
 				var room = false;
+
+
+/* ALL OF THIS IS TRYING TO MAKE STATUS THINGS								 */
+				
+				var boyStatus = true;
+				var girlStatus = false;
+				var adminStatus = false;
+				
+				//sends that admin has joined
+				if(boyStatus){
+					var data = {};
+					data.status = true;
+					socket.emit('boy present', data);
+				}
+					
+				//listens for girl joining	
+				socket.on("girl here",function(data) {
+					girlStatus = true;
+					changeColor('#girlStatus', '#FF3366', girlStatus, girlStatus);
+				});
+				
+				//listens for admin joining
+				socket.on("admin here",function(data) {
+					adminStatus = true;
+					changeColor('#adminStatus', '#c0cd00', adminStatus, adminStatus);
+				});
+				
+				//changes own color
+				changeColor('#boyStatus', '#66CCCC', boyStatus, boyStatus);
+				
+				//function to change box color
+				function changeColor(box, color, check1, check2) {
+					if(check1 && check2){
+						$(box).css('background-color', color);
+					}
+				}
+/* ALL OF THIS IS TRYING TO MAKE STATUS THINGS								 */
+
+
 				
 				
 				/*
@@ -152,6 +191,12 @@ socket.on("approved message",function(data) {
 	</head>
 	<body>
 		<img id ="logo" src="images/logo.png">
+		
+		<section id="status">
+			<div id="boyStatus"></div>
+			<div id="adminStatus"></div>
+			<div id="girlStatus"></div>
+		</section>
 		
 		<div id="overlay">
             <div id="popup">

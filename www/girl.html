@@ -24,8 +24,47 @@
 				var username = "Name";
 				var pass = "Password";
 				var room = false;
+				
+				
+/* ALL OF THIS IS TRYING TO MAKE STATUS THINGS								 */
+				
+				var boyStatus = false;
+				var girlStatus = true;
+				var adminStatus = false;
 					
-	
+				//sends that girl has joined	
+				if(girlStatus){
+					var data = {};
+					data.status = true;
+					socket.emit('girl present', data);
+				}
+					
+				//listens for admin joining	
+				socket.on("admin here",function(data) {
+					adminStatus = true;
+					changeColor('#boyStatus', '#66CCCC', boyStatus, adminStatus);
+				});
+				
+				//listens for boy joining
+				socket.on("boy here",function(data) {
+					boyStatus = true;
+					changeColor('#boyStatus', '#66CCCC', boyStatus, adminStatus);
+				});
+				
+				//changes own color
+				changeColor('#girlStatus', '#FF3366', girlStatus, girlStatus);
+				
+				//function to change box color
+				function changeColor(box, color, check1, check2) {
+					if(check1 && check2){
+						$(box).css('background-color', color);
+					}
+				}
+/* ALL OF THIS IS TRYING TO MAKE STATUS THINGS								 */
+
+
+				
+				
 				/*
 socket.on('user joined',function(username) {
 					appendMessage("Chat Admin",username + " has joined the room.",["is-admin"]);
@@ -125,7 +164,12 @@ socket.on('user joined',function(username) {
 	</head>
 	<body>
 		<img id ="logo" src="images/logo.png">
-
+		
+		<section id="status">
+			<div id="boyStatus"></div>
+			<div id="girlStatus"></div>
+		</section>
+		
 		<div id="overlay">
             <div id="popup">
             	<p><input type="text" id="girlUsernameInput" val="Name" /></p>

@@ -101,6 +101,27 @@ img#logo{
 	background:#ff1404;
 }
 
+#boyStatus{
+	width: 20px;
+	height: 20px;
+	margin: 5px;
+	background-color: grey;
+}
+
+#girlStatus{
+	width: 20px;
+	height: 20px;
+	margin: 5px;
+	background-color: grey;
+}
+
+#adminStatus{
+	width: 20px;
+	height: 20px;
+	margin: 5px;
+	background-color: grey;
+}
+
 
 /*
 #boxBoy p {
