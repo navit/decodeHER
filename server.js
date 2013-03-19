@@ -46,7 +46,7 @@ var server = http.createServer(function(req,res) {
 	});
 })
 
-server.listen(8080,'127.0.0.1');
+server.listen(8080,'0.0.0.0');
 
 
 var socketServer = io.listen(server);
@@ -95,10 +95,8 @@ socket.on('change room',function(data) {
 
 /* 	emitted by admin	 */
 	socket.on('admin rejects',function(data) {
-		socket.broadcast.to(data.room).emit('admin rejects and suggests to boy',data);
+		socket.broadcast.to(data.room).emit('admin rejects to boy',data);
 	});
-	
-
 	
 
 /*

@@ -6,7 +6,11 @@
 
 		<link type="stylesheet" rel="stylesheet" href="./css/main.css" />
 		<link href="css/popupBoy.css" rel="stylesheet"/>
-		
+		<style>
+			.is-boy{
+				border: solid white 1px;
+			}
+		</style>
 		<script src="/socket.io/socket.io.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 
@@ -15,7 +19,7 @@
 			var KEYCODE_ENTER_BUTTON = 13;
 
 			$(document).ready(function() {
-				var socket = io.connect('http://localhost');
+				var socket = io.connect('http://192.168.0.18');
 				
 				
 				var username = "What?";
@@ -37,15 +41,19 @@ socket.on('user joined',function(username) {
 				//});
 
 	
-				socket.on("admin rejects and suggests to boy",function(data) {
-					appendMessage(data.username,data.message,["is-admin"]);
+				socket.on("admin rejects to boy",function(data) {
+					appendMessage("Admin", "This message was rejected", ["is-admin"]);
+					appendMessage(data.username,data.message,["rejected-message"]);
 				});
 				
 				socket.on("admin translation to boy",function(data) {
-					appendMessage(data.latestU,data.latestM,[data.latestC]); //original message
+/* 					appendMessage(data.latestU,data.latestM,[data.latestC]); //original message */
 					appendMessage(data.username,data.message,["is-admin"]); //new translation
 				});
 				
+				socket.on("girl chatted",function(data) {
+					appendMessage(data.username,data.message,["is-girl"]);
+				});
 				/*
 socket.on("approved message",function(data) {
 					appendMessage(data.username,data.message,["is-boy"]); //his approved message that was sent to the girl displayed on his screen

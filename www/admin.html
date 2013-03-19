@@ -5,7 +5,11 @@
 
 		<link type="stylesheet" rel="stylesheet" href="./css/main.css" />
 		<link href="css/popupGirl.css" rel="stylesheet"/>
-		
+		<style>
+			.is-admin{
+				border: solid white 1px;
+			}
+		</style>
 		<script src="/socket.io/socket.io.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 
@@ -16,7 +20,7 @@
 			
 			
 			$(document).ready(function() {
-				var socket = io.connect('http://localhost');
+				var socket = io.connect('http://192.168.0.18');
 				
 				var username = "Admin";
 				var pass = "Password";
@@ -40,6 +44,7 @@ socket.on('user joined',function(username) {
 					latestUsername = data.username;
 					latestClass = "is-girl";
 					$("#forward").hide();
+					$("#reject").hide();
 				});
 				
 				socket.on("boy chatted",function(data) {
@@ -48,6 +53,7 @@ socket.on('user joined',function(username) {
 					latestUsername = data.username;
 					latestClass = "is-boy";
 					$("#forward").show();
+					$("#reject").show();
 				});
 	
 				
@@ -109,9 +115,11 @@ socket.on('user joined',function(username) {
 						data.room = room;
 						data.username = username;
 						data.message = $(this).val();
-						data.latestU = latestUsername;
+						/*
+data.latestU = latestUsername;
 						data.latestM = latestMessage;
 						data.latestC = latestClass;
+*/
 						
 						socket.emit('admin sends translation',data);
 						appendMessage(data.username,data.message,["is-admin"]);
@@ -129,9 +137,20 @@ socket.on('user joined',function(username) {
 					data.message = latestMessage;
 					
 					socket.emit('admin forwards', data);
+					$("#reject").hide();
 					$("#forward").hide();
 				});
-
+				
+				$("#reject").click(function() { //admin clicks on the reject button and send an automated message back to the boy
+					var data = {};
+					data.room = room;
+					data.username = latestUsername;
+					data.message = latestMessage;
+					
+					socket.emit('admin rejects', data);
+					$("#reject").hide();
+					$("#forward").hide();
+				});
 
 
 
@@ -156,6 +175,7 @@ socket.on('user joined',function(username) {
 			</div>
 			<center><input id="chatboxAdmin" type="text" /></center>
 		</div>
+		<button id="reject">Reject</button>
 		<button id="forward">Forward</button>
 		
 

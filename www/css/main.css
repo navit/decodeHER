@@ -96,6 +96,11 @@ img#logo{
 	background:#c0cd00;
 }
 
+.rejected-message{
+	padding:5px;
+	background:#ff1404;
+}
+
 
 /*
 #boxBoy p {
