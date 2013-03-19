@@ -5,13 +5,14 @@
 
 		<link type="stylesheet" rel="stylesheet" href="./css/main.css" />
 		<link href="css/popupGirl.css" rel="stylesheet"/>
-		<style>
+		<style> /* outline to make a box around own message */
 			.is-admin{
 				border: solid white 1px;
 			}
 		</style>
 		<script src="/socket.io/socket.io.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<!-- 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script> -->
+		<script src="js/jquery.js"></script> <!-- jquery library locally -->
 
 		<script>
 			var CHAT_ADMIN_NAME = "Chat Admin";
@@ -26,9 +27,9 @@
 				var pass = "Password";
 				var room = false;
 				
-				var latestMessage;
-				var latestUsername;
-				var latestClass;
+				var latestMessage; //might not be nessisary
+				var latestUsername; //might not be nessisary
+				var latestClass; //might not be nessisary
 								
 				
 				
@@ -37,21 +38,22 @@ socket.on('user joined',function(username) {
 					appendMessage("Chat Admin",username + " has joined the room.",["is-admin"]);
 				});
 */
-
+				//publishing girl messages to this screen
 				socket.on("girl chatted",function(data) {
 					appendMessage(data.username,data.message,["is-girl"]);
-					latestMessage = data.message;
-					latestUsername = data.username;
-					latestClass = "is-girl";
+					latestMessage = data.message;  //might not be nessisary
+					latestUsername = data.username; //might not be nessisary
+					latestClass = "is-girl"; //might not be nessisary
 					$("#forward").hide();
 					$("#reject").hide();
 				});
 				
+				//publishing boy messages to this screen
 				socket.on("boy chatted",function(data) {
 					appendMessage(data.username,data.message,["is-boy"]);
-					latestMessage = data.message;
-					latestUsername = data.username;
-					latestClass = "is-boy";
+					latestMessage = data.message; //might not be nessisary
+					latestUsername = data.username; //might not be nessisary
+					latestClass = "is-boy"; //might not be nessisary
 					$("#forward").show();
 					$("#reject").show();
 				});

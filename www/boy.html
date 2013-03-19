@@ -6,14 +6,15 @@
 
 		<link type="stylesheet" rel="stylesheet" href="./css/main.css" />
 		<link href="css/popupBoy.css" rel="stylesheet"/>
-		<style>
+		<style> /* outline to make a box around own message */
 			.is-boy{
 				border: solid white 1px;
 			}
 		</style>
 		<script src="/socket.io/socket.io.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-
+<!-- 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script> -->
+		<script src="js/jquery.js"></script> <!-- jquery library locally -->
+		
 		<script>
 			var CHAT_ADMIN_NAME = "Chat Admin";
 			var KEYCODE_ENTER_BUTTON = 13;
@@ -40,17 +41,20 @@ socket.on('user joined',function(username) {
 				//	appendMessage(CHAT_ADMIN_NAME,oldName + " is now known as " + newName,["is-admin"]);
 				//});
 
-	
-				socket.on("admin rejects to boy",function(data) {
+
+				//admin sends an automated message when rejecting with the rejected message as a "rejected-message" class
+				//he can then comment seperatly if he wants
+				socket.on("admin rejects to boy",function(data) { 
 					appendMessage("Admin", "This message was rejected", ["is-admin"]);
 					appendMessage(data.username,data.message,["rejected-message"]);
 				});
 				
 				socket.on("admin translation to boy",function(data) {
 /* 					appendMessage(data.latestU,data.latestM,[data.latestC]); //original message */
-					appendMessage(data.username,data.message,["is-admin"]); //new translation
+					appendMessage(data.username,data.message,["is-admin"]); //new translation or comment on rejected message
 				});
 				
+				//girl messages come directly to boy
 				socket.on("girl chatted",function(data) {
 					appendMessage(data.username,data.message,["is-girl"]);
 				});
@@ -59,12 +63,14 @@ socket.on("approved message",function(data) {
 					appendMessage(data.username,data.message,["is-boy"]); //his approved message that was sent to the girl displayed on his screen
 				});
 */
+
+				//his approved message that was sent to the girl displayed on his screen
 				socket.on("admin forwards to girl",function(data) {
-					appendMessage(data.username,data.message,["is-boy"]);//his approved message that was sent to the girl displayed on his screen
+					appendMessage(data.username,data.message,["is-boy"]);
 				});
 
 
-				// adding messages from admin
+				// adding messages on this screen
 				function appendMessage(username,message,classes) {
 					if(!classes) classes = [];
 
