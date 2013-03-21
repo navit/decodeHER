@@ -18,9 +18,7 @@
 			var CHAT_ADMIN_NAME = "Chat Admin";
 			var KEYCODE_ENTER_BUTTON = 13;
 			
-			
-			
-			$(document).ready(function() {
+/* 			$(document).ready(function() { */
 				var socket = io.connect('http://192.168.0.18'); //change this IP address
 				
 				var username = "Admin";
@@ -30,15 +28,16 @@
 				var latestMessage; //might not be nessisary
 				var latestUsername; //might not be nessisary
 				var latestClass; //might not be nessisary
-				
-				
-				
-				
-				
+	
+	
+	
+	
 /* ALL OF THIS IS TRYING TO MAKE STATUS THINGS								 */
 				var boyStatus = false;
 				var girlStatus = false;
 				var adminStatus = true;
+				
+				
 				
 				//sends that admin has joined
 				if(adminStatus){
@@ -67,10 +66,6 @@
 /* ALL OF THIS IS TRYING TO MAKE STATUS THINGS								 */
 
 
-
-
-				$("#forward").hide();
-				$("#reject").hide();
 			/*
 socket.on('user joined',function(username) {
 					appendMessage("Chat Admin",username + " has joined the room.",["is-admin"]);
@@ -82,26 +77,49 @@ socket.on('user joined',function(username) {
 					latestMessage = data.message;  //might not be nessisary
 					latestUsername = data.username; //might not be nessisary
 					latestClass = "is-girl"; //might not be nessisary
-					$("#forward").hide();
-					$("#reject").hide();
 				});
 				
 				//publishing boy messages to this screen
 				socket.on("boy chatted",function(data) {
-					appendMessage(data.username,data.message,["is-boy"]);
+					appendMessageBoy(data.username,data.message,["is-boy"]);
 					latestMessage = data.message; //might not be nessisary
 					latestUsername = data.username; //might not be nessisary
-					latestClass = "is-boy"; //might not be nessisary
-					$("#forward").show();
-					$("#reject").show();
+					latestClass = "is-boy"; //might not be nessisary;
 				});
 	
 				
-			
+				function doit() {
+					var data = {};
+					data.room = room;
+					data.username = latestUsername;
+					data.message = latestMessage;
+					socket.emit('admin forwards', data);
+				}
+				
+				function reject() {
+					window.alert("YAY");
+					var data = {};
+					data.room = room;
+					data.username = latestUsername;
+					data.message = latestMessage;
+					
+					socket.emit('admin rejects', data);
+
+				}
+
+				function forward() {
+					window.alert("YAY");
+					var data = {};
+					data.room = room;
+					data.username = latestUsername;
+					data.message = latestMessage;
+					socket.emit('admin forwards', data);
+
+				}
+								
 				// adding messages publishing on its own screen
 				function appendMessage(username,message,classes) {
 					if(!classes) classes = [];
-					
 					var p = $("<p></p>");
 					var span = $("<span></span>");
 					span.addClass("username");
@@ -109,17 +127,38 @@ socket.on('user joined',function(username) {
 					p.append(span);
 					p.append(":  ");
 					p.append(message);
-
+					
 					$.each(classes,function(i,className) {
 						p.addClass(className); //the current class - is boy or is girl
 					});
-
 					$("#boxAdmin").append(p);
-
 					// scroll down so we can see the latest!
 					$("#boxAdmin").scrollTop($("#boxAdmin")[0].scrollHeight);
 				}
-
+				
+				// adding messages publishing on its own screen
+				function appendMessageBoy(username,message,classes) {
+					if(!classes) classes = [];
+					var rejectButton = $('<button id="reject" onclick="reject()">Reject</button>');
+					var forwardButton = $('<button id="forward" onclick="forward()">Forward</button>');
+					var p = $("<p></p>");
+					var span = $("<span></span>");
+					span.addClass("username");
+					span.text(username);
+					p.append(rejectButton);
+					p.append(span);
+					p.append(":  ");
+					p.append(message);
+					p.append(forwardButton);					
+					
+					$.each(classes,function(i,className) {
+						p.addClass(className); //the current class - is boy or is girl
+					});
+					$("#boxAdmin").append(p);
+					// scroll down so we can see the latest!
+					$("#boxAdmin").scrollTop($("#boxAdmin")[0].scrollHeight);
+				}
+				
 				
 				//clicking in boxes
 				$("#password").click(function() {
@@ -170,33 +209,34 @@ data.latestU = latestUsername;
 					return false;
 				});
 				
-				$("#forward").click(function() {//admin clicks on the forward button and send message in both directions(boy and girl)
+				/*
+$("#forward").click(function() {//admin clicks on the forward button and send message in both directions(boy and girl)
+					window.alert("YAY");
 					var data = {};
 					data.room = room;
 					data.username = latestUsername;
 					data.message = latestMessage;
-					
 					socket.emit('admin forwards', data);
-					$("#reject").hide();
-					$("#forward").hide();
 				});
 				
 				$("#reject").click(function() { //admin clicks on the reject button and send an automated message back to the boy
+					window.alert("YAY");
 					var data = {};
 					data.room = room;
 					data.username = latestUsername;
 					data.message = latestMessage;
 					
 					socket.emit('admin rejects', data);
-					$("#reject").hide();
-					$("#forward").hide();
 				});
+*/
 
 
 
 				$('#password').val(pass);
 				//$("select").trigger("change"); // force the lobby to be selected.
-			});
+/* 			}); */
+			
+
 		</script>
 	</head>
 	<body>
@@ -221,9 +261,6 @@ data.latestU = latestUsername;
 			</div>
 			<center><input id="chatboxAdmin" type="text" /></center>
 		</div>
-		<button id="reject">Reject</button>
-		<button id="forward">Forward</button>
-		
-
+	
 	</body>
 </html>

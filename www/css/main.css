@@ -8,6 +8,11 @@ body {
 	/* background-image:url('texture.jepg'); */
 }
 
+#reject{
+	color: pink;
+	background-color: black;	
+}
+
 #chat {
 	width:100%;
 	height:80%;
