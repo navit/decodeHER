@@ -18,8 +18,8 @@
 			var CHAT_ADMIN_NAME = "Chat Admin";
 			var KEYCODE_ENTER_BUTTON = 13;
 			
-/* 			$(document).ready(function() { */
-				var socket = io.connect('http://192.168.0.18'); //change this IP address
+			$(document).ready(function() {
+				var socket = io.connect('http://149.31.133.58'); //change this IP address
 				
 				var username = "Admin";
 				var pass = "Password";
@@ -88,23 +88,13 @@ socket.on('user joined',function(username) {
 				});
 	
 				
-				function doit() {
-					var data = {};
-					data.room = room;
-					data.username = latestUsername;
-					data.message = latestMessage;
-					socket.emit('admin forwards', data);
-				}
-				
 				function reject() {
-					window.alert("YAY");
+					console.log(this);
 					var data = {};
 					data.room = room;
 					data.username = latestUsername;
-					data.message = latestMessage;
-					
+					data.message = $(this).val();
 					socket.emit('admin rejects', data);
-
 				}
 
 				function forward() {
@@ -114,7 +104,6 @@ socket.on('user joined',function(username) {
 					data.username = latestUsername;
 					data.message = latestMessage;
 					socket.emit('admin forwards', data);
-
 				}
 								
 				// adding messages publishing on its own screen
@@ -141,6 +130,7 @@ socket.on('user joined',function(username) {
 					if(!classes) classes = [];
 					var rejectButton = $('<button id="reject" onclick="reject()">Reject</button>');
 					var forwardButton = $('<button id="forward" onclick="forward()">Forward</button>');
+					rejectButton.val(message);
 					var p = $("<p></p>");
 					var span = $("<span></span>");
 					span.addClass("username");
@@ -188,18 +178,11 @@ socket.on('user joined',function(username) {
 
 				// translating messages
 				$("#chatboxAdmin").keyup(function(evt) {
-
 					if(evt.keyCode == KEYCODE_ENTER_BUTTON) {
 						var data = {};
 						data.room = room;
 						data.username = username;
 						data.message = $(this).val();
-						/*
-data.latestU = latestUsername;
-						data.latestM = latestMessage;
-						data.latestC = latestClass;
-*/
-						
 						socket.emit('admin sends translation',data);
 						appendMessage(data.username,data.message,["is-admin"]);
 
@@ -233,8 +216,7 @@ $("#forward").click(function() {//admin clicks on the forward button and send me
 
 
 				$('#password').val(pass);
-				//$("select").trigger("change"); // force the lobby to be selected.
-/* 			}); */
+			});
 			
 
 		</script>
