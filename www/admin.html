@@ -30,8 +30,6 @@
 				var latestClass; //might not be nessisary
 	
 	
-	
-	
 /* ALL OF THIS IS TRYING TO MAKE STATUS THINGS								 */
 				var boyStatus = false;
 				var girlStatus = false;
@@ -128,7 +126,7 @@ socket.on('user joined',function(username) {
 				// adding messages publishing on its own screen
 				function appendMessageBoy(username,message,classes) {
 					if(!classes) classes = [];
-					var rejectButton = $('<button id="reject" onclick="reject()">Reject</button>');
+					var rejectButton = $('<button id="reject">Reject</button>');
 					var forwardButton = $('<button id="forward" onclick="forward()">Forward</button>');
 					rejectButton.val(message);
 					var p = $("<p></p>");
@@ -149,7 +147,7 @@ socket.on('user joined',function(username) {
 					$("#boxAdmin").scrollTop($("#boxAdmin")[0].scrollHeight);
 				}
 				
-				
+
 				//clicking in boxes
 				$("#password").click(function() {
 					$(this).val("");
@@ -191,6 +189,14 @@ socket.on('user joined',function(username) {
 
 					return false;
 				});
+				
+				
+			$("button#reject").live('click', function(){
+					
+					console.log('clicked');
+					
+				});
+				
 				
 				/*
 $("#forward").click(function() {//admin clicks on the forward button and send message in both directions(boy and girl)
