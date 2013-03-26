@@ -22,6 +22,7 @@
 				var socket = io.connect('http://192.168.0.18'); //change this IP address
 				
 				var username = "Admin";
+				var usernameBoy = "Boy";
 				var pass = "Password";
 				var room = false;
 				
@@ -34,7 +35,6 @@
 				var boyStatus = false;
 				var girlStatus = false;
 				var adminStatus = true;
-				
 				
 				
 				//sends that admin has joined
@@ -64,44 +64,46 @@
 /* ALL OF THIS IS TRYING TO MAKE STATUS THINGS								 */
 
 
-			/*
-socket.on('user joined',function(username) {
-					appendMessage("Chat Admin",username + " has joined the room.",["is-admin"]);
-				});
-*/
+
+
 				//publishing girl messages to this screen
 				socket.on("girl chatted",function(data) {
 					appendMessage(data.username,data.message,["is-girl"]);
-					latestMessage = data.message;  //might not be nessisary
-					latestUsername = data.username; //might not be nessisary
-					latestClass = "is-girl"; //might not be nessisary
+					//latestMessage = data.message;  //might not be nessisary
+					//latestUsername = data.username; //might not be nessisary
+					//latestClass = "is-girl"; //might not be nessisary
 				});
 				
 				//publishing boy messages to this screen
 				socket.on("boy chatted",function(data) {
 					appendMessageBoy(data.username,data.message,["is-boy"]);
-					latestMessage = data.message; //might not be nessisary
-					latestUsername = data.username; //might not be nessisary
-					latestClass = "is-boy"; //might not be nessisary;
+					usernameBoy = data.username;
+					//latestMessage = data.message; //might not be nessisary
+					//latestUsername = data.username; //might not be nessisary
+					//latestClass = "is-boy"; //might not be nessisary;
 				});
 	
 				
+				//function for the clicking of reject buttons "document.on" is the new way of doing "live"
 				$(document).on("click", "button#reject", function(){ 
 					console.log(this);
 					var data = {};
 					data.room = room;
-					data.username = latestUsername;
-					data.message = $(this).val();
+					//data.username = latestUsername;
+					data.message = $(this).val(); //sends value of that chat entry
 					socket.emit('admin rejects', data); 
+					this.disabled = true;
 				});
 				
+				//function for the clicking of forward buttons "document.on" is the new way of doing "live"
 				$(document).on("click", "button#forward", function(){ 
 					console.log(this);
 					var data = {};
 					data.room = room;
-					data.username = latestUsername;
-					data.message = $(this).val();
+					data.username = usernameBoy;
+					data.message = $(this).val(); //sends value of that chat entry
 					socket.emit('admin forwards', data); 
+					this.disabled = true;
 				});
 				
 								
@@ -129,8 +131,8 @@ socket.on('user joined',function(username) {
 					if(!classes) classes = [];
 					var rejectButton = $('<button id="reject">Reject</button>');
 					var forwardButton = $('<button id="forward">Forward</button>');
-					rejectButton.val(message);
-					forwardButton.val(message);
+					rejectButton.val(message); //sets "value" of button equal to the message in that box so that each can be sent individually
+					forwardButton.val(message); //same as above
 					var p = $("<p></p>");
 					var span = $("<span></span>");
 					span.addClass("username");
@@ -154,27 +156,7 @@ socket.on('user joined',function(username) {
 				$("#password").click(function() {
 					$(this).val("");
 				});
-				
-				// changing usernames
-/*
-				$("#submitButton").click(function() {
-						var textBox = document.getElementById("girlUsernameInput");
-						var newUsername = $.trim($(textBox).val());
-						if(newUsername != "") {
-							var data = {};
-							data.room = room;
-							data.oldName = username;
-							username = newUsername;
-							data.newName = username;
 
-							socket.emit('user changed name',data);
-							$(textBox).val("");
-							appendMessage(CHAT_ADMIN_NAME,"You now go by " + data.newName + ".",["is-admin"]);
-					}
-
-					return false;
-				});
-*/
 
 				// translating messages
 				$("#chatboxAdmin").keyup(function(evt) {
@@ -192,35 +174,7 @@ socket.on('user joined',function(username) {
 					return false;
 				});
 				
-				
 		
-			
-			
-		
-				
-				
-				/*
-$("#forward").click(function() {//admin clicks on the forward button and send message in both directions(boy and girl)
-					window.alert("YAY");
-					var data = {};
-					data.room = room;
-					data.username = latestUsername;
-					data.message = latestMessage;
-					socket.emit('admin forwards', data);
-				});
-				
-				$("#reject").click(function() { //admin clicks on the reject button and send an automated message back to the boy
-					window.alert("YAY");
-					var data = {};
-					data.room = room;
-					data.username = latestUsername;
-					data.message = latestMessage;
-					
-					socket.emit('admin rejects', data);
-				});
-*/
-
-
 
 				$('#password').val(pass);
 			});

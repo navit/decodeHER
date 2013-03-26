@@ -85,7 +85,7 @@ socket.on('user joined',function(username) {
 				//he can then comment seperatly if he wants
 				socket.on("admin rejects to boy",function(data) { 
 					appendMessage("Admin", "This message was rejected", ["is-admin"]);
-					appendMessage(data.username,data.message,["rejected-message"]);
+					appendMessage(username,data.message,["rejected-message"]);
 				});
 				
 				socket.on("admin translation to boy",function(data) {
