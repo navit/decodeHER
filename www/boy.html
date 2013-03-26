@@ -7,7 +7,7 @@
 		<link type="stylesheet" rel="stylesheet" href="./css/main.css" />
 		<link href="css/popupBoy.css" rel="stylesheet"/>
 		<style> /* outline to make a box around own message */
-			.is-boy{
+			p.is-boy{
 				border: solid white 1px;
 			}
 		</style>
@@ -112,21 +112,16 @@ socket.on("approved message",function(data) {
 				// adding messages on this screen
 				function appendMessage(username,message,classes) {
 					if(!classes) classes = [];
-
 					var p = $("<p></p>");
 					var span = $("<span></span>");
-					span.addClass("username");
-					span.text(username);
-					p.append(span);
-					p.append(":  ");
+					var source = classes;
+					var img = $("<img src='images/" + source + ".png' class='chatImage " + classes + "' />");
+					p.append(img);
 					p.append(message);
-					
 					$.each(classes,function(i,className) {
 						p.addClass(className);
 					});
-
 					$("#boxBoy").append(p);
-
 					// scroll down so we can see the latest!
 					$("#boxBoy").scrollTop($("#boxBoy")[0].scrollHeight);
 				}

@@ -6,7 +6,7 @@
 		<link type="stylesheet" rel="stylesheet" href="./css/main.css" />
 		<link href="css/popupGirl.css" rel="stylesheet"/>
 		<style> /* outline to make a box around own message */
-			.is-admin{
+			p.is-admin{
 				border: solid white 1px;
 			}
 		</style>
@@ -115,10 +115,9 @@
 					if(!classes) classes = [];
 					var p = $("<p></p>");
 					var span = $("<span></span>");
-					span.addClass("username");
-					span.text(username);
-					p.append(span);
-					p.append(":  ");
+					var source = classes;
+					var img = $("<img src='images/" + source + ".png' class='chatImage " + classes + "' />");
+					p.append(img);
 					p.append(message);
 					
 					$.each(classes,function(i,className) {
@@ -128,6 +127,8 @@
 					// scroll down so we can see the latest!
 					$("#boxAdmin").scrollTop($("#boxAdmin")[0].scrollHeight);
 				}
+				
+							
 				
 				// adding messages publishing on its own screen
 				function appendMessageBoy(username,message,classes) {
@@ -140,12 +141,10 @@
 					rejectButton.addClass(uniqueID);
 					forwardButton.addClass(uniqueID);
 					var p = $("<p></p>");
-					var span = $("<span></span>");
-					span.addClass("username");
-					span.text(username);
+					var source = classes;
+					var img = $("<img src='images/" + source + ".png' class='chatImage is-boy' />");
 					p.append(rejectButton);
-					p.append(span);
-					p.append(":  ");
+					p.append(img);
 					p.append(message);
 					p.append(forwardButton);					
 					
