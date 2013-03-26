@@ -4,64 +4,73 @@ body {
 	height:100%;
 	font-family: Arial;
 	margin: 0;
-	background-image:url('../images/blackorchid.png');
+	/*
+background-image:url('../images/blackorchid.png');
 	background-repeat:repeat;
+*/
 }
 body#boy{
 	background: #1f6d9e;
 }
 
-img#logo{
-	width: 20%;
-	margin-top: 20px;
+body#girl{
+	background: #db5583;
 }
+img#logo{
+	width: 18%;
+	margin: 30px auto;
+}
+/* the entire space for chat*/
 #chat {
-	width:100%;
-	height:80%;
-	margin-left: 500px;
-	
+	width:60%;
+	height:90%;
+	margin-left: 500px;	
+	margin-top: 0;
 } 
+/* just the the window displaying the chats*/
 div.chatBox{
 	display: block;
-	/*
-width:45%;
-	height:75%;
-*/
+	width:25%; 
+	height: 70%;
 	cursor: text;
-	overflow: scroll;
-	margin: 20px auto;
-	padding:10px;
+	/* overflow: scroll;  */
+	/* margin: 20px auto; */
+	/* padding:10px; */
 	/* box-shadow: 4px 4px 5px #161616; */
 }
 
-#boxBoy img {
-	width: 426px;
-	height:621px;
-	
-	/* background: #66CCCC; */
+/*#boxBoy img {
+	/* width: 426px; 
+	/* background: #66CCCC; 
 }
 
-#boxGirl {
-	background: #FF3366;
+#boxGirl img{
+	 width: 426px; 	
 }
+*/
 
 #boxAdmin {
-	background: #c0cd00;
+	width: 426px;
+	height:621px;
 }
-
+/*input text box for all*/
 input.chatInput{
-	width:45.5%;
-	border:1px solid black;	
-	font-size:18px;
-	padding:5px;
-	box-shadow: 4px 4px 5px #161616;
+	border-style: none;
+	margin-left: 24px;
+	font-size:17px;
 }
 
 input#chatInputBoy{
+	background: url('../images/inputBoy.png') no-repeat scroll right;
+	width:46.3%;
+	height: 25%;
 	font-family: monospace;
 }
 
 input#chatInputGirl{
+	background: url('../images/inputGirl.png') no-repeat scroll right;
+	width:46.5%;
+	height: 25%;
 	font-family: georgia;
 }
 
