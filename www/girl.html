@@ -132,7 +132,7 @@ socket.on('user joined',function(username) {
 
 
 				// sending messages
-				$("#chatboxGirl").keyup(function(evt) {
+				$("#chatInputGirl").keyup(function(evt) {
 					if(evt.keyCode == KEYCODE_ENTER_BUTTON) {
 						var data = {};
 						data.room = room;
@@ -163,12 +163,14 @@ socket.on('user joined',function(username) {
 		</script>
 	</head>
 	<body>
-		<img id ="logo" src="images/logo.png">
+		<center><img id="logo" src="images/logo.png"></center>
 		
-		<section id="status">
+		<!--
+<section id="status">
 			<div id="boyStatus"></div>
 			<div id="girlStatus"></div>
 		</section>
+-->
 		
 		<div id="overlay">
             <div id="popup">
@@ -180,9 +182,9 @@ socket.on('user joined',function(username) {
         </div>    
         
 		<div id="chat">
-			<div id="boxGirl">
+			<div id="boxGirl" class="chatBox">
 			</div>
-			<center><input id="chatboxGirl" type="text" /></center>
+			<center><input id="chatInputGirl" class="chatInput" type="text" /></center>
 		</div>
 
 	</body>

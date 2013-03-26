@@ -8,79 +8,62 @@ body {
 	/* background-image:url('texture.jepg'); */
 }
 
+img#logo{
+	width: 20%;
+	margin-top: 20px;
+}
+
 #chat {
 	width:100%;
 	height:80%;
 } 
 
+div.chatBox{
+	display: block;
+	width:45%;
+	height:75%;
+	cursor: text;
+	overflow: scroll;
+	margin: 20px auto;
+	padding:10px;
+	box-shadow: 4px 4px 5px #161616;
+}
+
 #boxBoy {
-	display: block;
-	width:45%;
-	height:75%;
 	background: #66CCCC;
-	cursor: text;
-	overflow: scroll;
-	margin: 20px auto;
-	padding:10px;
-	box-shadow: 4px 4px 5px #161616;
 }
 
-#chatboxBoy {
-	width:45.5%;
-	border:1px solid black;	
-	font-size:18px;
-	font-family: monospace;
-	padding:5px;
-	box-shadow: 4px 4px 5px #161616;
-}
 #boxGirl {
-	display: block;
-	width:45%;
-	height:75%;
 	background: #FF3366;
-	cursor: text;
-	overflow: scroll;
-	margin: 20px auto;
-	padding:10px;
-	box-shadow: 4px 4px 5px #161616;
-}
-
-#chatboxGirl{
-	width:45.5%;
-	border:1px solid black;	
-	font-size:18px;
-	font-family: georgia;
-	padding:5px;
-	box-shadow: 4px 4px 5px #161616;
 }
 
 #boxAdmin {
-	display: block;
-	width:45%;
-	height:75%;
 	background: #c0cd00;
-	cursor: text;
-	overflow: scroll;
-	margin: 20px auto;
-	padding:10px;
-	box-shadow: 4px 4px 5px #161616;
 }
 
-#chatboxAdmin{
+input.chatInput{
 	width:45.5%;
 	border:1px solid black;	
 	font-size:18px;
-	font-family: georgia;
 	padding:5px;
 	box-shadow: 4px 4px 5px #161616;
 }
 
-img#logo{
-	width: 16%;
-	margin:20px 0 0 580px;
+input#chatInputBoy{
+	font-family: monospace;
 }
 
+input#chatInputGirl{
+	font-family: georgia;
+}
 
+input#chatInputAdmin{
+	font-family: georgia;
+}
+
+.chatImage{
+	width:50px;
+}
 .is-boy{
 	padding:5px;
 	background:#66CCCC;
@@ -101,6 +84,15 @@ img#logo{
 	background:#ff1404;
 }
 
+
+
+
+
+
+
+
+/*
+
 #boyStatus{
 	width: 20px;
 	height: 20px;
@@ -120,26 +112,5 @@ img#logo{
 	height: 20px;
 	margin: 5px;
 	background-color: grey;
-}
-
-
-/*
-#boxBoy p {
-	margin:8px 0;	
-	padding:5px;
-}
-
-#boxBoy p .username {
-	background:#ccc;
-	padding:5px 8px;
-	margin-right:5px;
-}
-
-#boxBoy p.is-admin .username {
-	background:#ff00ff;
-}
-
-#boxBoy p.is-me .username {
-	background:yellow;
 }
 */

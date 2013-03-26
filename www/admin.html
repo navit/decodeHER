@@ -86,24 +86,27 @@
 				
 				//function for the clicking of reject buttons "document.on" is the new way of doing "live"
 				$(document).on("click", "button#reject", function(){ 
-					console.log(this);
 					var data = {};
+					var thisClass = '.'+this.className;
 					data.room = room;
 					//data.username = latestUsername;
 					data.message = $(this).val(); //sends value of that chat entry
 					socket.emit('admin rejects', data); 
-					this.disabled = true;
+					$(thisClass).hide();
+					
 				});
 				
 				//function for the clicking of forward buttons "document.on" is the new way of doing "live"
 				$(document).on("click", "button#forward", function(){ 
-					console.log(this);
+/* 					console.log(this); */
 					var data = {};
+					var thisClass = '.'+this.className;
 					data.room = room;
 					data.username = usernameBoy;
 					data.message = $(this).val(); //sends value of that chat entry
 					socket.emit('admin forwards', data); 
-					this.disabled = true;
+					$(thisClass).hide();
+/* 					$(thisClass).disabled = true; */
 				});
 				
 								
@@ -131,8 +134,11 @@
 					if(!classes) classes = [];
 					var rejectButton = $('<button id="reject">Reject</button>');
 					var forwardButton = $('<button id="forward">Forward</button>');
+					var uniqueID = String(new Date().getTime());
 					rejectButton.val(message); //sets "value" of button equal to the message in that box so that each can be sent individually
 					forwardButton.val(message); //same as above
+					rejectButton.addClass(uniqueID);
+					forwardButton.addClass(uniqueID);
 					var p = $("<p></p>");
 					var span = $("<span></span>");
 					span.addClass("username");
@@ -159,7 +165,7 @@
 
 
 				// translating messages
-				$("#chatboxAdmin").keyup(function(evt) {
+				$("#chatInputAdmin").keyup(function(evt) {
 					if(evt.keyCode == KEYCODE_ENTER_BUTTON) {
 						var data = {};
 						data.room = room;
@@ -183,13 +189,16 @@
 		</script>
 	</head>
 	<body>
-		<img id ="logo" src="images/logo.png">
+		<center><img id="logo" src="images/logo.png"></center>
 		
+		<!--
+
 		<section id="status">
 			<div id="boyStatus"></div>
 			<div id="adminStatus"></div>
 			<div id="girlStatus"></div>
 		</section>
+-->
 		
 		<div id="overlay">
             <div id="popup">
@@ -200,9 +209,9 @@
         </div>    
         
 		<div id="chat">
-			<div id="boxAdmin">
+			<div id="boxAdmin" class="chatBox">
 			</div>
-			<center><input id="chatboxAdmin" type="text" /></center>
+			<center><input id="chatInputAdmin" class="chatInput" type="text" /></center>
 		</div>
 	
 	</body>

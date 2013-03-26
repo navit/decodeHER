@@ -165,7 +165,7 @@ socket.on("approved message",function(data) {
 
 
 				// sending messages
-				$("#chatboxBoy").keyup(function(evt) {
+				$("#chatInputBoy").keyup(function(evt) {
 
 					if(evt.keyCode == KEYCODE_ENTER_BUTTON) {
 						var data = {};
@@ -190,13 +190,15 @@ socket.on("approved message",function(data) {
 		</script>
 	</head>
 	<body>
-		<img id ="logo" src="images/logo.png">
+		<center><img id="logo" src="images/logo.png"></center>
 		
-		<section id="status">
+		<!--
+<section id="status">
 			<div id="boyStatus"></div>
 			<div id="adminStatus"></div>
 			<div id="girlStatus"></div>
 		</section>
+-->
 		
 		<div id="overlay">
             <div id="popup">
@@ -208,9 +210,9 @@ socket.on("approved message",function(data) {
         </div>  
         
 		<div id="chat">
-			<div id="boxBoy">
+			<div id="boxBoy" class="chatBox">
 			</div>
-			<center><input id="chatboxBoy" type="text" /></center>
+			<center><input id="chatInputBoy" class="chatInput" type="text" /></center>
 		</div>
 
 	</body>
