@@ -60,7 +60,7 @@ div.chatBox{
 
 /* ALL THIS IS FOR THE ADMIN PAGE WITH THE FORWARD/REJECT BUTTONS */
 img#reject, img#forward{
-	cursor: pointer;;
+	cursor: pointer;
 	padding: 5px;
 	width: 20px;
 	margin-top: 4px;
