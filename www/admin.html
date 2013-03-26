@@ -19,7 +19,7 @@
 			var KEYCODE_ENTER_BUTTON = 13;
 			
 			$(document).ready(function() {
-				var socket = io.connect('http://149.31.133.58'); //change this IP address
+				var socket = io.connect('http://192.168.0.18'); //change this IP address
 				
 				var username = "Admin";
 				var pass = "Password";
@@ -86,23 +86,24 @@ socket.on('user joined',function(username) {
 				});
 	
 				
-				function reject() {
+				$(document).on("click", "button#reject", function(){ 
 					console.log(this);
 					var data = {};
 					data.room = room;
 					data.username = latestUsername;
 					data.message = $(this).val();
-					socket.emit('admin rejects', data);
-				}
-
-				function forward() {
-					window.alert("YAY");
+					socket.emit('admin rejects', data); 
+				});
+				
+				$(document).on("click", "button#forward", function(){ 
+					console.log(this);
 					var data = {};
 					data.room = room;
 					data.username = latestUsername;
-					data.message = latestMessage;
-					socket.emit('admin forwards', data);
-				}
+					data.message = $(this).val();
+					socket.emit('admin forwards', data); 
+				});
+				
 								
 				// adding messages publishing on its own screen
 				function appendMessage(username,message,classes) {
@@ -127,8 +128,9 @@ socket.on('user joined',function(username) {
 				function appendMessageBoy(username,message,classes) {
 					if(!classes) classes = [];
 					var rejectButton = $('<button id="reject">Reject</button>');
-					var forwardButton = $('<button id="forward" onclick="forward()">Forward</button>');
+					var forwardButton = $('<button id="forward">Forward</button>');
 					rejectButton.val(message);
+					forwardButton.val(message);
 					var p = $("<p></p>");
 					var span = $("<span></span>");
 					span.addClass("username");
@@ -191,11 +193,10 @@ socket.on('user joined',function(username) {
 				});
 				
 				
-			$("button#reject").live('click', function(){
-					
-					console.log('clicked');
-					
-				});
+		
+			
+			
+		
 				
 				
 				/*
