@@ -3,34 +3,42 @@ body {
 	width:100%;
 	height:100%;
 	font-family: Arial;
-	background: #333333;
-	zoom: reset;
-	/* background-image:url('texture.jepg'); */
+	margin: 0;
+	background-image:url('../images/blackorchid.png');
+	background-repeat:repeat;
+}
+body#boy{
+	background: #1f6d9e;
 }
 
 img#logo{
 	width: 20%;
 	margin-top: 20px;
 }
-
 #chat {
 	width:100%;
 	height:80%;
+	margin-left: 500px;
+	
 } 
-
 div.chatBox{
 	display: block;
-	width:45%;
+	/*
+width:45%;
 	height:75%;
+*/
 	cursor: text;
 	overflow: scroll;
 	margin: 20px auto;
 	padding:10px;
-	box-shadow: 4px 4px 5px #161616;
+	/* box-shadow: 4px 4px 5px #161616; */
 }
 
-#boxBoy {
-	background: #66CCCC;
+#boxBoy img {
+	width: 426px;
+	height:621px;
+	
+	/* background: #66CCCC; */
 }
 
 #boxGirl {
