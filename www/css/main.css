@@ -49,6 +49,54 @@ width:45%;
 	background: #c0cd00;
 }
 
+
+
+
+/* ALL THIS IS FOR THE ADMIN PAGE WITH THE FORWARD/REJECT BUTTONS */
+img#reject, img#forward{
+	cursor: pointer;;
+	padding: 5px;
+	width: 20px;
+	margin-top: 4px;
+}
+
+p.outer{
+	height: 70px;
+}
+
+p.inner{
+	width: 70%;
+	float: left;
+	margin: 0px;
+}
+
+p.message{
+	display: inline;
+	float: left;
+	margin-left: 10px;
+}
+
+img.is-boy{
+	display: inline;
+	float: left;
+}
+
+img#reject{
+	display: inline;
+	float: left;
+}
+
+img#forward{
+	display: inline;
+	float: right;
+}
+
+/* ****************** */
+
+
+
+
+
 input.chatInput{
 	width:45.5%;
 	border:1px solid black;	

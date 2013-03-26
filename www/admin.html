@@ -85,7 +85,7 @@
 	
 				
 				//function for the clicking of reject buttons "document.on" is the new way of doing "live"
-				$(document).on("click", "button#reject", function(){ 
+				$(document).on("click", "img#reject", function(){ 
 					var data = {};
 					var thisClass = '.'+this.className;
 					data.room = room;
@@ -96,8 +96,9 @@
 					
 				});
 				
+				
 				//function for the clicking of forward buttons "document.on" is the new way of doing "live"
-				$(document).on("click", "button#forward", function(){ 
+				$(document).on("click", "img#forward", function(){ 
 /* 					console.log(this); */
 					var data = {};
 					var thisClass = '.'+this.className;
@@ -114,7 +115,7 @@
 				function appendMessage(username,message,classes) {
 					if(!classes) classes = [];
 					var p = $("<p></p>");
-					var span = $("<span></span>");
+/* 					var span = $("<span></span>"); */
 					var source = classes;
 					var img = $("<img src='images/" + source + ".png' class='chatImage " + classes + "' />");
 					p.append(img);
@@ -133,25 +134,35 @@
 				// adding messages publishing on its own screen
 				function appendMessageBoy(username,message,classes) {
 					if(!classes) classes = [];
+/*
 					var rejectButton = $('<button id="reject">Reject</button>');
 					var forwardButton = $('<button id="forward">Forward</button>');
+*/
+					var rejectButton = $('<img src="images/rejectButton.png" id="reject" />');
+					var forwardButton = $('<img src="images/forwardButton.png" id="forward" />');
 					var uniqueID = String(new Date().getTime());
 					rejectButton.val(message); //sets "value" of button equal to the message in that box so that each can be sent individually
 					forwardButton.val(message); //same as above
 					rejectButton.addClass(uniqueID);
 					forwardButton.addClass(uniqueID);
-					var p = $("<p></p>");
+					var pOut = $("<p class='outer'></p>");
+					var pIn = $("<p class='inner'></p>");
+					var pMessage = $("<p class='message'></p>");
 					var source = classes;
 					var img = $("<img src='images/" + source + ".png' class='chatImage is-boy' />");
-					p.append(rejectButton);
-					p.append(img);
-					p.append(message);
-					p.append(forwardButton);					
+					
+					pMessage.append(message);
+					pIn.append(img);
+					pIn.append(pMessage);
+					
+					pOut.append(rejectButton);
+					pOut.append(pIn);
+					pOut.append(forwardButton);				
 					
 					$.each(classes,function(i,className) {
-						p.addClass(className); //the current class - is boy or is girl
+						pOut.addClass(className); //the current class - is boy or is girl
 					});
-					$("#boxAdmin").append(p);
+					$("#boxAdmin").append(pOut);
 					// scroll down so we can see the latest!
 					$("#boxAdmin").scrollTop($("#boxAdmin")[0].scrollHeight);
 				}
