@@ -6,14 +6,19 @@
 
 		<link type="stylesheet" rel="stylesheet" href="./css/main.css" />
 		<link href="css/popupBoy.css" rel="stylesheet"/>
+		
 		<style> /* outline to make a box around own message */
 			p.is-boy{
 				border: solid white 1px;
 			}
 		</style>
 		<script src="/socket.io/socket.io.js"></script>
-<!-- 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script> -->
+<!-- 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+			<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+ -->
+ 			
 		<script src="js/jquery.js"></script> <!-- jquery library locally -->
+		<script src="js/jqueryui.js"></script> <!-- jqueryui library locally -->
 		
 		<script>
 			var CHAT_ADMIN_NAME = "Chat Admin";
@@ -121,7 +126,8 @@ socket.on("approved message",function(data) {
 					$.each(classes,function(i,className) {
 						p.addClass(className);
 					});
-					$("#boxBoy").append(p);
+/* 					$("#boxBoy").append(p).hide().fadeIn(1000); */
+					$(p).hide().appendTo("#boxBoy").show( "highlight", 1500);
 					// scroll down so we can see the latest!
 					$("#boxBoy").scrollTop($("#boxBoy")[0].scrollHeight);
 				}

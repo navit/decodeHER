@@ -4,6 +4,7 @@ body {
 	height:100%;
 	font-family: Arial;
 	margin: 0;
+	background: #fdf5b9;
 	/*
 background-image:url('../images/blackorchid.png');
 	background-repeat:repeat;
@@ -131,22 +132,24 @@ input#chatInputAdmin{
 .chatImage{
 	width:50px;
 }
-.is-boy{
+
+
+p.is-boy{
 	padding:5px;
 	background:#66CCCC;
 }
 
-.is-girl{
+p.is-girl{
 	padding:5px;
 	background:#FF3366;
 }
 
-.is-admin{
+p.is-admin{
 	padding:5px;
 	background:#c0cd00;
 }
 
-.rejected-message{
+p.rejected-message{
 	padding:5px;
 	background:#ff1404;
 }

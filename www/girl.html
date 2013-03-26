@@ -13,6 +13,7 @@
 		<script src="/socket.io/socket.io.js"></script>
 		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script> -->
 		<script src="js/jquery.js"></script> <!-- jquery library locally -->
+		<script src="js/jqueryui.js"></script> <!-- jqueryui library locally -->
 		
 		<script>
 			var CHAT_ADMIN_NAME = "Chat Admin";
@@ -98,7 +99,8 @@ socket.on('user joined',function(username) {
 						p.addClass(className);
 					});
 
-					$("#boxGirl").append(p);
+/* 					$("#boxGirl").append(p); */
+					$(p).hide().appendTo("#boxGirl").show( "highlight", 1500);
 					// scroll down so we can see the latest!
 					$("#boxGirl").scrollTop($("#boxGirl")[0].scrollHeight);
 				}

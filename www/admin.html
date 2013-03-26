@@ -13,6 +13,7 @@
 		<script src="/socket.io/socket.io.js"></script>
 <!-- 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script> -->
 		<script src="js/jquery.js"></script> <!-- jquery library locally -->
+		<script src="js/jqueryui.js"></script> <!-- jqueryui library locally -->
 
 		<script>
 			var CHAT_ADMIN_NAME = "Chat Admin";
@@ -124,7 +125,8 @@
 					$.each(classes,function(i,className) {
 						p.addClass(className); //the current class - is boy or is girl
 					});
-					$("#boxAdmin").append(p);
+/* 					$("#boxAdmin").append(p); */
+					$(p).hide().appendTo("#boxAdmin").show( "highlight", 1500);
 					// scroll down so we can see the latest!
 					$("#boxAdmin").scrollTop($("#boxAdmin")[0].scrollHeight);
 				}
@@ -162,7 +164,8 @@
 					$.each(classes,function(i,className) {
 						pOut.addClass(className); //the current class - is boy or is girl
 					});
-					$("#boxAdmin").append(pOut);
+/* 					$("#boxAdmin").append(pOut); */
+					$(pOut).hide().appendTo("#boxAdmin").show( "highlight", {color: 'red'}, 1500);
 					// scroll down so we can see the latest!
 					$("#boxAdmin").scrollTop($("#boxAdmin")[0].scrollHeight);
 				}
