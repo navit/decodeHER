@@ -103,11 +103,7 @@ socket.on('user joined',function(username) {
 					$("#boxGirl").scrollTop($("#boxGirl")[0].scrollHeight);
 				}
 
-				
-				
-				
-				
-				
+			
 				
 				// changing usernames
 				$("#submitButton").click(function() {
@@ -159,7 +155,7 @@ socket.on('user joined',function(username) {
 			});
 		</script>
 	</head>
-	<body>
+	<body id ="girl">
 		<center><img id="logo" src="images/logo.png"></center>
 		
 		<!--
@@ -180,8 +176,9 @@ socket.on('user joined',function(username) {
         
 		<div id="chat">
 			<div id="boxGirl" class="chatBox">
+			<img src="images/chatboxeGirl.png">
 			</div>
-			<center><input id="chatInputGirl" class="chatInput" type="text" /></center>
+			<input id="chatInputGirl" class="chatInput" type="text" />
 		</div>
 
 	</body>
