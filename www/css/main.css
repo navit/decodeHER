@@ -53,6 +53,7 @@ img#logo{
 }
 */
 
+/* where messages appear */
 div.chatBox{
 	width: 55%;
 	height: 63%;
@@ -72,6 +73,7 @@ div#boxAdmin{
 
 }
 
+/* matching style of admin input to admin chat box */
 input#chatInputAdmin{
 	border: 2px solid #cdcdcc;
 	border-radius:5px;
@@ -84,12 +86,11 @@ input#chatInputAdmin{
 	width: 55%;
 	top: 83%;
 	left: 23%;
-	}
+}
 
 
 
 /*input text box for all*/
-
 input.chatInput{
 	border-style: none;
 	font-size: 20px;
@@ -114,6 +115,8 @@ input#chatInputAdmin{
 	font-family: georgia;
 }
 
+
+/* "Background" images for boy and girl chat box and input */
 .chatBackgroundImage{
 	width: 60%;
 	height: 70%;
@@ -129,11 +132,12 @@ input#chatInputAdmin{
 
 
 
-
+/* icon of person who the message is from */
 .chatImage{
 	width: 7%;
 }
 
+/* appearence of the box that the message appears in */
 p.is-boy, p.is-girl, p.is-admin, p.rejected-message{
 	padding:5px;
 	height: 70px;
