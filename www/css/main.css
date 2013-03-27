@@ -4,7 +4,7 @@ body {
 	height:100%;
 	font-family: Arial;
 	margin: 0;
-	background: #fdf5b9;
+/* 	background: #fdf5b9; */
 	/*
 background-image:url('../images/blackorchid.png');
 	background-repeat:repeat;
@@ -23,21 +23,18 @@ img#logo{
 }
 /* the entire space for chat*/
 #chat {
-	width:60%;
-	height:90%;
-	margin-left: 500px;	
-	margin-top: 0;
+	width:100%;
+	height:100%;
+	margin-top: auto;
 } 
 /* just the the window displaying the chats*/
 div.chatBox{
-	display: block;
-	width:25%; 
-	height: 70%;
-	cursor: text;
-	/* overflow: scroll;  */
-	/* margin: 20px auto; */
-	/* padding:10px; */
-	/* box-shadow: 4px 4px 5px #161616; */
+	width: 55%;
+	height: 63%;
+	top: 204px;
+	position: absolute;
+	margin-left: 23%;
+	overflow: scroll; 
 }
 
 /*#boxBoy img {
@@ -54,6 +51,84 @@ div.chatBox{
 	width: 426px;
 	height:621px;
 }
+
+
+
+
+/*input text box for all*/
+
+input.chatInput{
+	border-style: none;
+	margin-left: 24px;
+	font-size:17px;
+}
+
+input#chatInputBoy{
+	background: url('../images/inputBoy.png') no-repeat scroll right;
+	width:46.3%;
+	height: 25%;
+	font-family: monospace;
+}
+
+input#chatInputGirl{
+	background: url('../images/inputGirl.png') no-repeat scroll right;
+	width:46.5%;
+	height: 25%;
+	font-family: georgia;
+}
+
+input#chatInputAdmin{
+	font-family: georgia;
+}
+
+.chatBackgroundImage{
+	width: 60%;
+	height: 70%;
+}
+
+.chatImage{
+	width: 7%;
+}
+
+
+
+
+
+
+p.is-boy{
+	padding:5px;
+	background:#66CCCC;
+	height: 70px;
+	width: 90%;
+	margin-left: 4%;
+}
+
+p.is-girl{
+	padding:5px;
+	background:#FF3366;
+	height: 70px;
+	width: 90%;
+	margin-left: 4%;
+}
+
+p.is-admin{
+	padding:5px;
+	background:#c0cd00;
+	height: 70px;
+	width: 90%;
+	margin-left: 4%;
+}
+
+p.rejected-message{
+	padding:5px;
+	background:#ff1404;
+	height: 70px;
+	width: 90%;
+	margin-left: 4%;
+}
+
+
+
 
 
 
@@ -97,68 +172,6 @@ img#forward{
 }
 
 /* ****************** */
-
-
-
-
-
-=======
-/*input text box for all*/
-
-input.chatInput{
-	border-style: none;
-	margin-left: 24px;
-	font-size:17px;
-}
-
-input#chatInputBoy{
-	background: url('../images/inputBoy.png') no-repeat scroll right;
-	width:46.3%;
-	height: 25%;
-	font-family: monospace;
-}
-
-input#chatInputGirl{
-	background: url('../images/inputGirl.png') no-repeat scroll right;
-	width:46.5%;
-	height: 25%;
-	font-family: georgia;
-}
-
-input#chatInputAdmin{
-	font-family: georgia;
-}
-
-.chatImage{
-	width:50px;
-}
-
-
-p.is-boy{
-	padding:5px;
-	background:#66CCCC;
-}
-
-p.is-girl{
-	padding:5px;
-	background:#FF3366;
-}
-
-p.is-admin{
-	padding:5px;
-	background:#c0cd00;
-}
-
-p.rejected-message{
-	padding:5px;
-	background:#ff1404;
-}
-
-
-
-
-
-
 
 
 /*
