@@ -59,15 +59,14 @@ div.chatBox{
 
 input.chatInput{
 	border-style: none;
-	margin-left: 24px;
 	font-size:17px;
+	height: 60px;
+	width: 52.5%;
 }
 
 input#chatInputBoy{
-	background: url('../images/inputBoy.png') no-repeat scroll right;
-	width:46.3%;
-	height: 25%;
 	font-family: monospace;
+	background: #1f6d9e;
 }
 
 input#chatInputGirl{
@@ -84,6 +83,11 @@ input#chatInputAdmin{
 .chatBackgroundImage{
 	width: 60%;
 	height: 70%;
+}
+
+.chatInputBackgroundImage{
+	width: 60%;
+	height: 80px;	
 }
 
 .chatImage{
