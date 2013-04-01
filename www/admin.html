@@ -19,7 +19,9 @@
 			var CHAT_ADMIN_NAME = "Chat Admin";
 			var KEYCODE_ENTER_BUTTON = 13;
 			
+		//	window.resizeTo(100,200);
 			$(document).ready(function() {
+				
 				var socket = io.connect('http://192.168.0.18'); //change this IP address
 				
 				var username = "Admin";
@@ -202,7 +204,7 @@
 		</script>
 	</head>
 	<body id="admin">
-		<center><img id="logo" src="images/logo.png"></center>
+		<img id="logo" src="images/logo.png">
 		
 		<!--
 
@@ -221,11 +223,16 @@
             </div>
         </div>    
         
+		
 		<div id="chat">
+			<img class="chatBackgroundImage" src="images/chatboxeGirl.png">
 			<div id="boxAdmin" class="chatBox">
+			
 			</div>
-			<center><input id="chatInputAdmin" class="chatInput" type="text" /></center>
+			<img class="chatInputBackgroundImage" src="images/inputGirl.png">
+			<input id="chatInputAdmin" class="chatInput" type="text" />
 		</div>
+		
 	
 	</body>
 </html>

@@ -64,30 +64,7 @@ div.chatBox{
 	overflow: scroll; 
 }
 
-div#boxAdmin{
-	border: 2px solid #cdcdcc;
-	border-radius:5px;
-	-moz-border-radius:5px; /* Old Firefox */
-	-moz-box-shadow:    inset 0 0 18px #828282;
-	-webkit-box-shadow: inset 0 0 18px #828282;
-	box-shadow:         inset 0 0 18px #828282;		
 
-}
-
-/* matching style of admin input to admin chat box */
-input#chatInputAdmin{
-	border: 2px solid #cdcdcc;
-	border-radius:5px;
-	-moz-border-radius:5px; /* Old Firefox */
-	-moz-box-shadow:    inset 0 0 18px #828282;
-	-webkit-box-shadow: inset 0 0 18px #828282;
-	box-shadow:         inset 0 0 18px #828282;
-	font-size: 20px;
-	height: 55px;
-	width: 55%;
-	top: 83%;
-	left: 23%;
-}
 
 
 
