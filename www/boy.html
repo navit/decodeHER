@@ -92,6 +92,7 @@ socket.on('user joined',function(username) {
 				//he can then comment seperatly if he wants
 				socket.on("admin rejects to boy",function(data) { 
 					appendMessage("Admin", "This message was rejected", ["is-admin"]);
+					console.log("hi");
 					appendMessage(username,data.message,["rejected-message"]);
 				});
 				
@@ -119,17 +120,24 @@ socket.on("approved message",function(data) {
 				// adding messages on this screen
 				function appendMessage(username,message,classes) {
 					if(!classes) classes = [];
-					var p = $("<p></p>");
-					var span = $("<span></span>");
+					
+					var pOut = $("<p class='outer'></p>");
+					var pIn = $("<p class='inner'></p>");
+					var pMessage = $("<p class='message'></p>");
 					var source = classes;
 					var img = $("<img src='images/" + source + ".png' class='chatImage " + classes + "' />");
-					p.append(img);
-					p.append(message);
+					
+					pMessage.append(message);
+					pIn.append(img);
+					pIn.append(pMessage);
+					
+					pOut.append(pIn);
+					
 					$.each(classes,function(i,className) {
-						p.addClass(className);
+						pOut.addClass(className); //the current class - is boy or is girl
 					});
-/* 					$("#boxBoy").append(p).hide().fadeIn(1000); */
-					$(p).hide().appendTo("#boxBoy").show( "highlight", 1500);
+/* 					$("#boxAdmin").append(pOut); */
+					$(pOut).hide().appendTo("#boxBoy").show( "highlight", 1500);
 					// scroll down so we can see the latest!
 					$("#boxBoy").scrollTop($("#boxBoy")[0].scrollHeight);
 				}
@@ -240,7 +248,7 @@ socket.on("approved message",function(data) {
 		
 		<div id="overlay">
             <div id="popup">
-                <p><input type="text" id="password" val="Password" /> <a href="#" id="submitButton">Submit</a></p>
+                <p><input type="text" id="password" val="Password" /> <a href="girl.html" id="submitButton">Submit</a></p>
                 <br>
                 <button id="makePassword">Make me one!</button>
             </div>

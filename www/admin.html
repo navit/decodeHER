@@ -113,18 +113,24 @@
 				// adding messages publishing on its own screen
 				function appendMessage(username,message,classes) {
 					if(!classes) classes = [];
-					var p = $("<p></p>");
-/* 					var span = $("<span></span>"); */
+					
+					var pOut = $("<p class='outer'></p>");
+					var pIn = $("<p class='inner'></p>");
+					var pMessage = $("<p class='message'></p>");
 					var source = classes;
 					var img = $("<img src='images/" + source + ".png' class='chatImage " + classes + "' />");
-					p.append(img);
-					p.append(message);
+					
+					pMessage.append(message);
+					pIn.append(img);
+					pIn.append(pMessage);
+					
+					pOut.append(pIn);
 					
 					$.each(classes,function(i,className) {
-						p.addClass(className); //the current class - is boy or is girl
+						pOut.addClass(className); //the current class - is boy or is girl
 					});
-/* 					$("#boxAdmin").append(p); */
-					$(p).hide().appendTo("#boxAdmin").show( "highlight", 1500);
+/* 					$("#boxAdmin").append(pOut); */
+					$(pOut).hide().appendTo("#boxAdmin").show( "highlight", 1500);
 					// scroll down so we can see the latest!
 					$("#boxAdmin").scrollTop($("#boxAdmin")[0].scrollHeight);
 				}
