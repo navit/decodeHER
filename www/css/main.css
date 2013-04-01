@@ -83,11 +83,11 @@ input.chatInput{
 }
 
 input#chatInputBoy{
-	font-family: ;
+	font-family:'Geo';
 }
 
 input#chatInputGirl{
-	font-family: georgia;
+	font-family: 'Dancing Script';
 }
 
 input#chatInputAdmin{
@@ -138,27 +138,31 @@ p.is-boy, p.is-girl, p.is-admin, p.rejected-message{
 	height: 70px;
 	width: 90%;
 	margin-left: 4%;
-	font-size: 18px;
+	font-size: 22px;
 	padding-left: 9px;
 	border-radius: 15px;
 }
 
 p.is-boy{
 	background:#198a9b;
-	/* padding-top: 8px; */
+	font-family: 'Geo', sans-serif;
 }
 
 p.is-girl{
 	background:#FF3366;
+	font-family: 'Dancing Script';
 }
 
 p.is-admin{
 	background:#ccc0c0;
-	font-family: monospace;
+	font-family:'Cutive Mono', serif,monospace;
+	font-size: 17px;
 }
 
 p.rejected-message{
 	background:#ff1404;
+	font-family:'Cutive Mono', serif,monospace;
+	font-size: 17px;
 }
 img.rejected-message{
 	padding-top: 8px;
