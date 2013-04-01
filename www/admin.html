@@ -4,12 +4,8 @@
 		<title>ChatRoom</title>
 
 		<link type="stylesheet" rel="stylesheet" href="./css/main.css" />
-		<link href="css/popupGirl.css" rel="stylesheet"/>
-		<style> /* outline to make a box around own message */
-			p.is-admin{
-				border: solid white 1px;
-			}
-		</style>
+		<link href="css/popup.css" rel="stylesheet"/>
+		
 		<script src="/socket.io/socket.io.js"></script>
 <!-- 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script> -->
 		<script src="js/jquery.js"></script> <!-- jquery library locally -->
@@ -196,7 +192,34 @@
 				});
 				
 		
+								// selecting rooms
+				$("#submitButton").click(function() {
+					room = $("#password").val();
+					
+					var data = {};
+					data.username = username;
+					
+					if(room) data.oldRoom = room;
+					data.newRoom = $("#password").val();
+					room = data.newRoom;
 
+					socket.emit('change room',data);
+					console.log(room);
+/* 					var prettyRoomName = $(this).find("option[value='" + room + "']").text(); */
+/* 					appendMessage(CHAT_ADMIN_NAME,"You are now in this room :: " + prettyRoomName,["is-admin"]); */
+
+				});
+				
+				$("button#makePassword").click( function() {
+					var madePassword = String(new Date().getTime());
+					console.log(madePassword);
+					$('#password').val(madePassword);
+					var p = $("<p>Share this password: <br> </p>");
+					p.append(madePassword);
+					$(p).hide().appendTo("#popup").show( "clip", 500);
+				});
+				
+				
 				$('#password').val(pass);
 			});
 			
@@ -214,16 +237,8 @@
 			<div id="girlStatus"></div>
 		</section>
 -->
-		
-		<div id="overlay">
-            <div id="popup">
-                <p><input type="text" id="password" val="Password" /></p>
-                <p id="submitButton">Submit</p>
-                <a id="closeButton" href="#"><img id="closeButtonImg" src="images/chatButton.png" /></a>
-            </div>
-        </div>    
-        
-		
+		   
+    
 		<div id="chat">
 			<img class="chatBackgroundImage" src="images/chatboxeAdmin.png">
 			<div id="boxAdmin" class="chatBox">
@@ -233,6 +248,14 @@
 			<input id="chatInputAdmin" class="chatInput" type="text" />
 		</div>
 		
+		
+		<div id="overlay">
+            <div id="popup">
+                <p><input type="text" id="password" val="Password" /> <a href="#" id="submitButton">Submit</a></p>
+                <br>
+                <button id="makePassword">Make me one!</button>
+            </div>
+        </div> 
 	
 	</body>
 </html>
