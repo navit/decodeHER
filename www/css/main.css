@@ -182,11 +182,11 @@ img#reject, img#forward{
 }
 
 p.outer{
-	height: 70px;
+/* 	height: 70px; */
 }
 
 p.inner{
-	width: 70%;
+	width: 100%;
 	float: left;
 	margin: 0px;
 }
@@ -195,6 +195,7 @@ p.message{
 	display: inline;
 	float: left;
 	margin-left: 10px;
+	width: 85%;
 }
 
 img.is-boy{
